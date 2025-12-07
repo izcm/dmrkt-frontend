@@ -1,6 +1,46 @@
 'use client'
 
+import { useAccount, useSignTypedData } from "wagmi";
+
+// local
+import { domain, fields } from "@/utils/signing"
+
 export default function CreateOrder() {
+  const { address: account, isConnected } = useAccount();
+  const { signTypedDataAsync } = useSignTypedData();
+  
+  const collectionAddr = "0x0000000000000000000000000000000000000000" as `0x${string}`;
+  const tokenAddr = "0x0000000000000000000000000000000000000000" as `0x${string}`;
+
+  const order = {
+    side: 1,
+    actor: account,
+    isCollectionBid: false,
+    collection: collectionAddr,
+    tokenId: BigInt(123),
+    price: BigInt(100000000000),
+    currency: tokenAddr,
+    start: BigInt(0),
+    end: BigInt(99999999999),
+    nonce: BigInt(77),
+  }
+
+  const handleSignOrder = async () => {
+    const types = {
+      Order: fields,
+    }
+
+    const sig = await signTypedDataAsync({
+      domain,
+      types,
+      primaryType: "Order",
+      message: order,
+    })
+
+    console.log("Signature:", sig);
+  }
+
+
   return (
     <main className="w-full max-w-2xl mx-auto flex flex-col gap-8">
       {/* Title */}
@@ -73,7 +113,12 @@ export default function CreateOrder() {
         </div>
 
         {/* Sign Button */}
-        <button className="btn btn-primary mt-4 rounded px-4 py-2">SIGN ORDER</button>
+        <button 
+          onClick={handleSignOrder}
+          className="btn btn-primary mt-4 rounded px-4 py-2"
+        >
+          SIGN ORDER
+        </button>
       </div>
     </main>
   )

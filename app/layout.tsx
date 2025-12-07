@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="cyber-void" suppressHydrationWarning>
-      <body>
+      <body suppressHydrationWarning>
         <Providers>
           <Header />
           <div className="w-full min-h-screen p-4 font-mono py-4 mt-4">{children}</div>
