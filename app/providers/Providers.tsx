@@ -1,7 +1,7 @@
 'use client'
 
 import { WagmiProvider } from 'wagmi'
-import { config } from "@/blockchain/config/wagmi"
+import { config } from '@/blockchain/config/wagmi'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { RainbowKitProvider, getDefaultConfig, midnightTheme } from '@rainbow-me/rainbowkit'
 import '@rainbow-me/rainbowkit/styles.css'

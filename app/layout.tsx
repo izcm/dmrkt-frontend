@@ -15,14 +15,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" data-theme="cyber-void"  suppressHydrationWarning>
-      <body suppressHydrationWarning>
+    <html lang="en" data-theme="cyber-void" suppressHydrationWarning>
+      <body>
         <Providers>
-            <Header />
-            <div className="w-full min-h-screen p-4 font-mono py-4 mt-4">{children}</div>
-            <footer className="text-xs text-muted py-6 text-center">
-              © 2025 A2Z Blocks — Humbly built.
-            </footer>
+          <Header />
+          <div className="w-full min-h-screen p-4 font-mono py-4 mt-4">{children}</div>
+          <footer className="text-xs text-muted py-6 text-center">
+            © 2025 A2Z Blocks — Humbly built.
+          </footer>
         </Providers>
       </body>
     </html>
