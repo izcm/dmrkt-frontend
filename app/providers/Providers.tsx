@@ -1,7 +1,7 @@
 'use client'
 
-import { WagmiProvider, createConfig, http } from 'wagmi'
-import { localhost } from 'wagmi/chains'
+import { WagmiProvider } from 'wagmi'
+import { config } from "@/blockchain/config/wagmi"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { RainbowKitProvider, getDefaultConfig, midnightTheme } from '@rainbow-me/rainbowkit'
 import '@rainbow-me/rainbowkit/styles.css'
@@ -13,13 +13,6 @@ const CYBER_VOID = {
   borderSoft: 'rgba(130, 150, 255, 0.18)',
   accentWeak: 'rgba(109, 117, 255, 0.24)',
 }
-
-const config = getDefaultConfig({
-  appName: 'dMrkt',
-  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || 'YOUR_PROJECT_ID',
-  chains: [localhost],
-  ssr: true,
-})
 
 const queryClient = new QueryClient()
 

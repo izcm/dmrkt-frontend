@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers/Providers'
-import { ThemeProvider } from './providers/ThemeProvider'
 import { Header } from '@/components/organisms/Header'
 
 export const metadata: Metadata = {
@@ -16,16 +15,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme="cyber-void"  suppressHydrationWarning>
       <body suppressHydrationWarning>
         <Providers>
-          <ThemeProvider>
             <Header />
             <div className="w-full min-h-screen p-4 font-mono py-4 mt-4">{children}</div>
             <footer className="text-xs text-muted py-6 text-center">
               © 2025 A2Z Blocks — Humbly built.
             </footer>
-          </ThemeProvider>
         </Providers>
       </body>
     </html>
