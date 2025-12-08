@@ -1,5 +1,5 @@
-// lib/dbConnect.ts
-import mongoose, { Mongoose } from 'mongoose'
+import mongoose from 'mongoose' // runtime object
+import type { Mongoose } from 'mongoose' // Type
 
 const MONGODB_URI = process.env.MONGODB_URI
 
@@ -27,7 +27,7 @@ export const dbConnect = async (): Promise<Mongoose> => {
   if (cached.conn) return cached.conn
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI).then(mongoose => mongoose)
+    cached.promise = mongoose.connect(MONGODB_URI, { dbName: 'dmrkt' }).then(mongoose => mongoose)
   }
 
   cached.conn = await cached.promise

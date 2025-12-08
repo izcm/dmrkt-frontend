@@ -1,5 +1,8 @@
 import mongoose from 'mongoose'
 
+// ------------
+// ORDER
+// ------------
 const OrderItem = new mongoose.Schema({
   side: {
     type: Number,
@@ -51,25 +54,11 @@ const OrderItem = new mongoose.Schema({
     required: true,
     match: /^[0-9]+$/,
   },
-})
-
-const SignatureItem = new mongoose.Schema({
-  v: {
-    type: Number,
-    required: true,
-  },
-  r: {
+  signature: {
     type: String,
     required: true,
-    match: /^0x[a-fA-F0-9]{64}$/,
-  },
-  s: {
-    type: String,
-    required: true,
-    match: /^0x[a-fA-F0-9]{64}$/,
+    match: /^0x[a-fA-F0-9]+$/,
   },
 })
 
-export const OrderModel = mongoose.models.Order || mongoose.model('Order', OrderItem)
-export const SignatureModel =
-  mongoose.models.Signature || mongoose.model('Signature', SignatureItem)
+export const OrderModel = mongoose.models.order || mongoose.model('order', OrderItem)
