@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback, useEffect } from 'react'
+import React from 'react'
 import { useAccount, useSignTypedData } from 'wagmi'
 
 import { parseEther } from 'viem'
@@ -8,13 +9,14 @@ import { parseEther } from 'viem'
 // local
 import { domain, fields } from '@/features/orderbook/eip712'
 import { createOrder } from '../actions/create-order'
+import { FormSelect } from '@/components/atoms/FormSelect'
 
 import { DURATIONS } from '../constants'
 
 const collectionAddr = '0x0000000000000000000000000000000000000000' as `0x${string}`
 const tokenAddr = '0x0000000000000000000000000000000000000000' as `0x${string}`
 
-export const CreateOrderForm = () => {
+export const CreateOrderForm = React.memo(() => {
   const { address: account, isConnected } = useAccount()
   const { signTypedDataAsync } = useSignTypedData()
 
@@ -25,17 +27,6 @@ export const CreateOrderForm = () => {
     isCollectionBid: false,
     end: 0,
   })
-
-  const handleChange = (field: string, value: any) => {
-    setForm(prev => ({
-      ...prev,
-      [field]: value,
-    }))
-  }
-
-  if (!isConnected || !account) {
-    return <p>Connect to wallet first</p>
-  }
 
   const handleSumbitOrder = async () => {
     const now = Math.floor(Date.now() / 1000)
@@ -53,7 +44,6 @@ export const CreateOrderForm = () => {
       nonce: BigInt(77), // TODO generate
     }
 
-    console.log(order)
     const types = {
       Order: fields,
     }
@@ -73,6 +63,33 @@ export const CreateOrderForm = () => {
     }
   }
 
+  const handleChange = useCallback((field: string, value: any) => {
+    setForm(prev => ({
+      ...prev,
+      [field]: value,
+    }))
+  }, [])
+
+  const getButtonClass = (isSide: number) =>
+    `btn py-1 flex items-center gap-2 ${form.side === isSide ? '' : 'opacity-50'}`
+
+  const getDotClass = (isSide: number) =>
+    `h-2 w-2 rounded-full ${form.side === isSide ? 'bg-accent' : 'border border-default'}`
+
+  const handleCollectionBidChange = useCallback(
+    (value: string) => {
+      handleChange('isCollectionBid', value === 'any')
+    },
+    [handleChange]
+  )
+
+  const handleEndChange = useCallback(
+    (value: string) => {
+      handleChange('end', DURATIONS[value as keyof typeof DURATIONS])
+    },
+    [handleChange]
+  )
+
   return (
     <main className="w-full max-w-2xl mx-auto flex flex-col gap-8">
       {/* Title */}
@@ -84,19 +101,13 @@ export const CreateOrderForm = () => {
         <div className="flex flex-col gap-2">
           <label className="text-sm font-medium">Order Type</label>
           <div className="grid grid-cols-2 gap-2">
-            <button
-              onClick={() => handleChange('side', 0)}
-              className="btn py-1 flex items-center gap-2"
-            >
-              <span className="h-2 w-2 rounded-full bg-accent" />
+            <button onClick={() => handleChange('side', 0)} className={getButtonClass(0)}>
+              <span className={getDotClass(0)} />
               SELL
             </button>
 
-            <button
-              onClick={() => handleChange('side', 1)}
-              className="btn py-1 flex items-center gap-2 opacity-50"
-            >
-              <span className="h-2 w-2 rounded-full border border-default" />
+            <button onClick={() => handleChange('side', 1)} className={getButtonClass(1)}>
+              <span className={getDotClass(1)} />
               BUY
             </button>
           </div>
@@ -107,19 +118,24 @@ export const CreateOrderForm = () => {
           <label className="text-sm font-medium">Token</label>
 
           {/* SELL — specific token */}
-          <select className="border border-default rounded px-3 py-2">
-            <option>#42</option>
-            <option>#1337</option>
-          </select>
+          <FormSelect
+            options={[
+              { label: '#42', value: '42' },
+              { label: '#1337', value: '1337' },
+            ]}
+            onChange={value => handleChange('tokenId', value)}
+            defaultValue="42"
+          />
 
           {/* BUY — collection bid */}
-          <select
-            onChange={e => handleChange('isCollectionBid', e.target.value == 'any')}
-            className="border border-default rounded px-3 py-2"
-          >
-            <option value="any">Any Token</option>
-            <option value="specific">Specific Token #…</option>
-          </select>
+          <FormSelect
+            options={[
+              { label: 'Any Token', value: 'any' },
+              { label: 'Specific Token #…', value: 'specific' },
+            ]}
+            onChange={handleCollectionBidChange}
+            defaultValue="any"
+          />
         </div>
 
         {/* Price */}
@@ -128,7 +144,6 @@ export const CreateOrderForm = () => {
           <input
             onChange={e => {
               const price = e.target.value
-              parseEther(price)
               handleChange('price', price)
             }}
             type="number"
@@ -140,14 +155,15 @@ export const CreateOrderForm = () => {
         {/* Valid Until */}
         <div className="flex flex-col gap-2">
           <label className="text-sm font-medium">Valid Until</label>
-          <select
-            onChange={e => handleChange('end', DURATIONS[e.target.value as keyof typeof DURATIONS])}
-            className="border border-default rounded px-3 py-2"
-          >
-            <option value={'7d'}>7 days</option>
-            <option value={'1d'}>1 day</option>
-            <option value={'30m'}>30 minutes</option>
-          </select>
+          <FormSelect
+            options={[
+              { label: '7 days', value: '7d' },
+              { label: '1 day', value: '1d' },
+              { label: '30 minutes', value: '30m' },
+            ]}
+            onChange={handleEndChange}
+            defaultValue="7d"
+          />
         </div>
 
         {/* Divider */}
@@ -168,4 +184,4 @@ export const CreateOrderForm = () => {
       </div>
     </main>
   )
-}
+})

@@ -19,7 +19,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <Providers>
           <Header />
-          <div className="w-full min-h-screen p-4 font-mono py-4 mt-4">{children}</div>
+          <div className="w-full min-h-screen p-4 font-mono py-4 mt-8">{children}</div>
           <footer className="text-xs text-muted py-6 text-center">
             © 2025 A2Z Blocks — Humbly built.
           </footer>
