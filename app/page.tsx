@@ -7,7 +7,7 @@ export default function Home() {
     <main className="flex flex-col items-center min-h-screen">
       <div className="flex gap-8 mt-4">
         <Link href="/collections">
-          <button className="w-full btn btn-primary">Browse Collections</button>
+          <button className="w-full btn btn-secondary">Browse Collections</button>
         </Link>
       </div>
     </main>

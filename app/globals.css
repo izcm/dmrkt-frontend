@@ -548,6 +548,17 @@ input:focus {
     color-mix(in oklab, var(--accent) 65%, transparent),
     color-mix(in oklab, var(--accent) 45%, transparent)
   );
+}
+
+/* Form inputs — accent color */
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"] {
+  accent-color: var(--accent);
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--accent) 50%, transparent);
   box-shadow: 0 0 8px color-mix(in oklab, var(--accent) 25%, transparent);
 }
 
