@@ -14,21 +14,6 @@ import { DURATIONS } from '../constants'
 const collectionAddr = '0x0000000000000000000000000000000000000000' as `0x${string}`
 const tokenAddr = '0x0000000000000000000000000000000000000000' as `0x${string}`
 
-function sanitize(obj: any): any {
-  if (typeof obj === 'bigint') return obj.toString()
-  if (Array.isArray(obj)) return obj.map(sanitize)
-  if (obj && typeof obj === 'object') {
-    return Object.fromEntries(
-      Object.entries(obj).map(([k, v]) => [k, sanitize(v)])
-    )
-  }
-  return obj
-}
-
-function prepareDBOrder(order: any, sig: any): any {
-  return sanitize({ ...order,  signature: "abc"})
-}
-
 export const CreateOrderForm = () => {
   const { address: account, isConnected } = useAccount()
   const { signTypedDataAsync } = useSignTypedData()
@@ -48,6 +33,10 @@ export const CreateOrderForm = () => {
     }))
   }
 
+  if (!isConnected || !account) {
+    return <p>Connect to wallet first</p>
+  }
+
   const handleSumbitOrder = async () => {
     const now = Math.floor(Date.now() / 1000)
 
@@ -64,7 +53,7 @@ export const CreateOrderForm = () => {
       nonce: BigInt(77), // TODO generate
     }
 
-    console.log(order);
+    console.log(order)
     const types = {
       Order: fields,
     }
@@ -77,9 +66,9 @@ export const CreateOrderForm = () => {
         message: order,
       })
 
-      const res = await createOrder({...order, signature: sig})
+      const res = await createOrder({ ...order, signature: sig })
     } catch (err) {
-      console.error("createOrder error:", err)
+      console.error('createOrder error:', err)
       throw err // rethrow so you see it in client console too
     }
   }

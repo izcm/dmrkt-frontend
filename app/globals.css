@@ -438,6 +438,15 @@ input:focus {
   .token-action:hover {
     text-shadow: 0 0 6px currentColor;
   }
+
+  .hover-lift {
+    transition: all 160ms ease;
+  }
+
+  .hover-lift:hover {
+    border-color: var(--accent);
+    background: color-mix(in oklab, var(--bg-surface) 40%, transparent);
+  }
 }
 
 /* -------------------------------------------------
