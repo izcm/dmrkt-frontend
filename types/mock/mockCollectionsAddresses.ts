@@ -20,11 +20,6 @@ export const popularEthCollections = [
     address: '0xed5af388653567af2f388e6224dc7c4b3241c544',
   },
   {
-    name: 'CloneX',
-    slug: 'clonex',
-    address: '0x49cf6f5d44e70224e2e955dfb915f9ab1f531fbb',
-  },
-  {
     name: 'Doodles',
     slug: 'doodles-official',
     address: '0x8a90cab2b38dba80c64b7734e58ee1db38b8992e',

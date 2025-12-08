@@ -1,21 +1,21 @@
-import { dummyCollections } from '@/lib/mock/dummyCollections'
-
 import { CollectionFilters } from '@/components/molecules/CollectionFilters'
 import { CollectionList } from '@/components/organisms/CollectionList'
-import { DummyCollection } from '@/lib/mock/dummyCollections'
 
-import { getNFTData } from '@/lib/alchemy/nfts'
+import { popularEthCollections } from '@/types/mock/mockCollectionsAddresses'
 
-interface CollectionsClientProps {
-  collections: DummyCollection[]
-}
+import { getCollectionMetadata, getNFTData } from '@/lib/alchemy/'
 
-export default function BrowseCollectionsPage() {
-  getNFTData();
+export default async function BrowseCollectionsPage() {
+  const collections = await Promise.all(
+    popularEthCollections.map(c => 
+      getCollectionMetadata(c.address)
+    )
+  )
+
   return (
     <main className="flex flex-row max-w-7xl gap-8 mx-auto">
       <CollectionFilters />
-      <CollectionList collections={dummyCollections} />
+      <CollectionList collections={collections} />
     </main>
   )
 }

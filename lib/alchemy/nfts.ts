@@ -3,7 +3,7 @@ import { ALCHEMY_ENDPOINT_URL as endpoint } from './constants'
 
 const baseUrl = `${endpoint}/${apiKey}`
 
-export async function getNFTData() {
+export const getNFTData = async () => {
   try {
     // The wallet address we want to query for NFTs:
     const ownerAddr = '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'

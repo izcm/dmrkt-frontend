@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState } from 'react'
 import React from 'react'
 import { useAccount, useSignTypedData } from 'wagmi'
 
@@ -16,7 +16,7 @@ import { DURATIONS } from '../constants'
 const collectionAddr = '0x0000000000000000000000000000000000000000' as `0x${string}`
 const tokenAddr = '0x0000000000000000000000000000000000000000' as `0x${string}`
 
-export const CreateOrderForm = React.memo(() => {
+export const CreateOrderForm = () => {
   const { address: account, isConnected } = useAccount()
   const { signTypedDataAsync } = useSignTypedData()
 
@@ -63,29 +63,23 @@ export const CreateOrderForm = React.memo(() => {
     }
   }
 
-  const handleChange = useCallback((field: string, value: any) => {
+  const handleChange = (field: string, value: any) => {
     setForm(prev => ({
       ...prev,
       [field]: value,
     }))
-  }, [])
+  }
 
   const getDotClass = (isSide: number) =>
     `h-2 w-2 rounded-full ${form.side === isSide ? 'bg-accent' : 'border border-default'}`
 
-  const handleCollectionBidChange = useCallback(
-    (value: string) => {
-      handleChange('isCollectionBid', value === 'any')
-    },
-    [handleChange]
-  )
+  const handleCollectionBidChange = (value: string) => {
+    handleChange('isCollectionBid', value === 'any')
+  }
 
-  const handleEndChange = useCallback(
-    (value: string) => {
-      handleChange('end', DURATIONS[value as keyof typeof DURATIONS])
-    },
-    [handleChange]
-  )
+  const handleEndChange = (value: string) => {
+    handleChange('end', DURATIONS[value as keyof typeof DURATIONS])
+  }
 
   return (
     <main className="w-full max-w-2xl mx-auto flex flex-col gap-8">
@@ -181,4 +175,4 @@ export const CreateOrderForm = React.memo(() => {
       </div>
     </main>
   )
-})
+}

@@ -1,9 +1,18 @@
-const ALCHEMY_API_KEY = process.env.ALCHEMY_API_KEY
-const ALCHEMY_ENDPOINT_URL = process.env.ALCHEMY_ENDPOINT_URL
+import { CollectionMetadata } from '@/types'
 
-async function getCollections() {
-  const res = await fetch(`${ALCHEMY_ENDPOINT_URL}/something?something=`)
-  const colData = await res.json()
+import { ALCHEMY_API_KEY as apiKey } from './constants'
+import { ALCHEMY_ENDPOINT_URL as endpoint } from './constants'
+import { CollectedMetadata } from 'next/dist/build/webpack/loaders/metadata/types'
 
-  console.log('collections', colData)
+const baseUrl = `${endpoint}/${apiKey}`
+
+export const getCollectionMetadata = async (
+  address: `0x${string}`
+): Promise<CollectionMetadata> => {
+  const res = await fetch(`${baseUrl}/getContractMetadata?contractAddress=${address}`)
+  const data = await res.json()
+
+  console.log(data)
+
+  return data as CollectionMetadata
 }

@@ -3,7 +3,7 @@
 import { TextInput } from '@/components/atoms/TextInput'
 import { RangeSlider } from '@/components/atoms/RangeSlider'
 import { Checkbox } from '@/components/atoms/Checkbox'
-import { Select } from '@/components/atoms/Select'
+import { FormSelect } from '@/components/atoms/FormSelect'
 
 export function CollectionFilters() {
   return (
@@ -33,13 +33,28 @@ export function CollectionFilters() {
         {/* Volume */}
         <div className="flex flex-col gap-2">
           <label className="text-xs font-semibold text-muted">Volume</label>
-          <Select options={['High to Low', 'Low to High']} />
+          <FormSelect 
+            options={[
+              { label: 'High to Low', value: 'high' },
+              { label: 'Low to High', value: 'low' }
+            ]}
+            onChange={(value) => console.log('Volume:', value)}
+            defaultValue="high"
+          />
         </div>
 
         {/* Sort */}
         <div className="flex flex-col gap-2">
           <label className="text-xs font-semibold text-muted">Sort</label>
-          <Select options={['Trending', 'Newest', 'Most Active']} />
+          <FormSelect
+            options={[
+              { label: 'Trending', value: 'trending' },
+              { label: 'Newest', value: 'newest' },
+              { label: 'Most Active', value: 'active' }
+            ]}
+            onChange={(value) => console.log('Sort:', value)}
+            defaultValue="trending"
+          />
         </div>
       </div>
     </div>
