@@ -9,7 +9,7 @@ interface CollectionListProps {
 
 export function CollectionList({ collections }: CollectionListProps) {
   return (
-    <div className="flex-2 mt-8 flex flex-col divide-y divide-border-soft border border-default rounded-lg">
+    <div className="flex-2 flex flex-col divide-y divide-border-soft border border-default rounded-lg">
       {collections.map((col, i) => (
         <Link key={i} href={`/collection/${col.contract}`}>
           <div

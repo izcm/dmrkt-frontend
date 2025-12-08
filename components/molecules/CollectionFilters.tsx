@@ -7,8 +7,8 @@ import { Select } from '@/components/atoms/Select'
 
 export function CollectionFilters() {
   return (
-    <div className="min-w-[240px]">
-      <div className="relative mt-8 mx-auto">
+    <div className="min-w-[240px] p-4 rounded-lg border border-default">
+      <div className="relative mx-auto">
         <TextInput placeholder="Search collections" />
       </div>
 

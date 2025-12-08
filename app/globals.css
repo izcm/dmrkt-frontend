@@ -50,7 +50,7 @@
 :root[data-theme='cyber-void'] {
   color-scheme: dark;
 
-  --bg-primary: #02030a;
+  --bg-primary: #010208;
   --bg-secondary: #090b1d;
   --bg-surface: #06071a;
   --bg-muted: rgba(140, 160, 255, 0.09);
@@ -58,8 +58,8 @@
   --text-primary: rgba(245, 247, 255, 0.94);
   --text-muted: rgba(210, 220, 255, 0.72);
 
-  --border-default: rgba(130, 150, 255, 0.35);
-  --border-soft: rgba(130, 150, 255, 0.18);
+  --border-default: rgba(130, 151, 255, 0.479);
+  --border-soft: rgba(130, 151, 255, 0.39);
 
   --accent: #6d75ff;
   --accent-weak: rgba(109, 117, 255, 0.24);
