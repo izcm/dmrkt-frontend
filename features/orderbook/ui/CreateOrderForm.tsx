@@ -24,7 +24,7 @@ export const CreateOrderForm = React.memo(() => {
     side: 0,
     price: '',
     actor: account,
-    isCollectionBid: false,
+    isCollectionBid: true,
     end: 0,
   })
 
@@ -70,9 +70,6 @@ export const CreateOrderForm = React.memo(() => {
     }))
   }, [])
 
-  const getButtonClass = (isSide: number) =>
-    `btn py-1 flex items-center gap-2 ${form.side === isSide ? '' : 'opacity-50'}`
-
   const getDotClass = (isSide: number) =>
     `h-2 w-2 rounded-full ${form.side === isSide ? 'bg-accent' : 'border border-default'}`
 
@@ -101,12 +98,12 @@ export const CreateOrderForm = React.memo(() => {
         <div className="flex flex-col gap-2">
           <label className="text-sm font-medium">Order Type</label>
           <div className="grid grid-cols-2 gap-2">
-            <button onClick={() => handleChange('side', 0)} className={getButtonClass(0)}>
+            <button onClick={() => handleChange('side', 0)} className="btn py-1 flex items-center gap-2">
               <span className={getDotClass(0)} />
               SELL
             </button>
 
-            <button onClick={() => handleChange('side', 1)} className={getButtonClass(1)}>
+            <button onClick={() => handleChange('side', 1)} className="btn py-1 flex items-center gap-2">
               <span className={getDotClass(1)} />
               BUY
             </button>
