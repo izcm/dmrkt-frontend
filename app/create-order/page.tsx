@@ -3,7 +3,7 @@
 import { useAccount, useSignTypedData } from "wagmi";
 
 // local
-import { domain, fields } from "@/utils/signing"
+import { domain, fields } from "@/lib/utils/signing"
 
 export default function CreateOrder() {
   const { address: account, isConnected } = useAccount();
