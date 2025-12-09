@@ -1,6 +1,8 @@
 'use client'
 
-export default function NFTPage({ params }: { params: { address: string } }) {
+import { useParams } from 'next/navigation'
+
+export default function CollectionPage({ params }: { params: { address: string } }) {
   const { address } = params
 
   const mockCollection = {

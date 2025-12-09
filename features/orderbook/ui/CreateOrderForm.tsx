@@ -92,12 +92,18 @@ export const CreateOrderForm = () => {
         <div className="flex flex-col gap-2">
           <label className="text-sm font-medium">Order Type</label>
           <div className="grid grid-cols-2 gap-2">
-            <button onClick={() => handleChange('side', 0)} className="btn py-1 flex items-center gap-2">
+            <button
+              onClick={() => handleChange('side', 0)}
+              className="btn py-1 flex items-center gap-2"
+            >
               <span className={getDotClass(0)} />
               SELL
             </button>
 
-            <button onClick={() => handleChange('side', 1)} className="btn py-1 flex items-center gap-2">
+            <button
+              onClick={() => handleChange('side', 1)}
+              className="btn py-1 flex items-center gap-2"
+            >
               <span className={getDotClass(1)} />
               BUY
             </button>

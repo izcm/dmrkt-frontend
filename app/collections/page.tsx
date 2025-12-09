@@ -7,15 +7,15 @@ import { getCollectionMetadata, getNFTData } from '@/lib/alchemy/'
 
 export default async function BrowseCollectionsPage() {
   const collections = await Promise.all(
-    popularEthCollections.map(c => 
-      getCollectionMetadata(c.address)
-    )
+    popularEthCollections.map(c => getCollectionMetadata(c.address))
   )
 
   return (
-    <main className="flex flex-row max-w-7xl gap-8 mx-auto">
-      <CollectionFilters />
-      <CollectionList collections={collections} />
+    <main className="flex flex-col max-w-7xl mx-auto">
+      <div className="flex flex-row gap-8">
+        <CollectionFilters />
+        <CollectionList collections={collections} />
+      </div>
     </main>
   )
 }

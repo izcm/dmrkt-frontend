@@ -33,12 +33,12 @@ export function CollectionFilters() {
         {/* Volume */}
         <div className="flex flex-col gap-2">
           <label className="text-xs font-semibold text-muted">Volume</label>
-          <FormSelect 
+          <FormSelect
             options={[
               { label: 'High to Low', value: 'high' },
-              { label: 'Low to High', value: 'low' }
+              { label: 'Low to High', value: 'low' },
             ]}
-            onChange={(value) => console.log('Volume:', value)}
+            onChange={value => console.log('Volume:', value)}
             defaultValue="high"
           />
         </div>
@@ -50,9 +50,9 @@ export function CollectionFilters() {
             options={[
               { label: 'Trending', value: 'trending' },
               { label: 'Newest', value: 'newest' },
-              { label: 'Most Active', value: 'active' }
+              { label: 'Most Active', value: 'active' },
             ]}
-            onChange={(value) => console.log('Sort:', value)}
+            onChange={value => console.log('Sort:', value)}
             defaultValue="trending"
           />
         </div>
