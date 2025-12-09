@@ -1,4 +1,4 @@
-export type CollectionMetadata = {
+export type AlchemyCollection = {
   address: string
   contractMetadata: {
     name: string
@@ -20,4 +20,11 @@ export type CollectionMetadata = {
       lastIngestedAt?: string
     }
   }
+}
+
+export type Listing = {
+  tokenId: string
+  image: string
+  name: string
+  price: string
 }

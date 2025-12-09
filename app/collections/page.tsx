@@ -3,7 +3,7 @@ import { CollectionList } from '@/components/organisms/CollectionList'
 
 import { popularEthCollections } from '@/types/mock/mockCollectionsAddresses'
 
-import { getCollectionMetadata, getNFTData } from '@/lib/alchemy/'
+import { getCollectionMetadata } from '@/lib/alchemy/'
 
 export default async function BrowseCollectionsPage() {
   const collections = await Promise.all(

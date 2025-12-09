@@ -1,5 +1,6 @@
 'use client'
 
+import { Search } from 'lucide-react'
 import { TextInput } from '@/components/atoms/TextInput'
 import { RangeSlider } from '@/components/atoms/RangeSlider'
 import { Checkbox } from '@/components/atoms/Checkbox'
@@ -8,8 +9,9 @@ import { FormSelect } from '@/components/atoms/FormSelect'
 export function CollectionFilters() {
   return (
     <div className="min-w-[240px] p-4 rounded-lg border border-default">
-      <div className="relative mx-auto">
-        <TextInput placeholder="Search collections" />
+      <div className="flex-1 relative">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
+        <TextInput />
       </div>
 
       {/* Filters */}

@@ -2,10 +2,10 @@
 
 import Link from 'next/link'
 
-import { CollectionMetadata } from '@/types'
+import { AlchemyCollection } from '@/types'
 
 interface CollectionListProps {
-  collections: CollectionMetadata[]
+  collections: AlchemyCollection[]
 }
 
 export function CollectionList({ collections }: CollectionListProps) {
