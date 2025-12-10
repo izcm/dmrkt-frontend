@@ -20,7 +20,6 @@ export const CollectionView = ({ collection, nfts }: CollectionViewProps) => {
 
   return (
     <div className="flex flex-col gap-4">
-
       <CollectionBanner collection={collection} />
 
       {/* SEARCH INPUT AND LINKS */}

@@ -2,47 +2,59 @@ import { Collection } from '@/types'
 
 export type AlchemyCollection = {
   address: string
-  contractMetadata: {
-    name: string
-    symbol: string
-    totalSupply: string
-    tokenType: string
-    contractDeployer: string
-    deployedBlockNumber: number
-    openSea?: {
-      floorPrice?: number
-      collectionName?: string
-      safelistRequestStatus?: string
-      imageUrl?: string
-      description?: string
-      externalUrl?: string
-      twitterUsername?: string
-      discordUrl?: string
-      bannerImageUrl?: string
-      lastIngestedAt?: string
-    }
+  name: string
+  symbol: string
+  totalSupply: string
+  tokenType: string
+  contractDeployer: string
+  deployedBlockNumber: number
+
+  openSeaMetadata?: {
+    floorPrice?: number
+    collectionName?: string
+    safelistRequestStatus?: string
+    imageUrl?: string
+    description?: string
+    externalUrl?: string
+    twitterUsername?: string
+    discordUrl?: string
+    bannerImageUrl?: string
+    lastIngestedAt?: string
   }
+
+  isSpam?: string
+  spamClassifications?: string[]
 }
 
 // Convert Alchemy Collection to local Collection type
 export const toCollection = (alchemy: AlchemyCollection): Collection => {
+  const os = alchemy.openSeaMetadata
+
+  const imageUrl = os?.imageUrl || os?.externalUrl
+  const bannerUrl =
+    os?.bannerImageUrl ||
+    'https://img.freepik.com/free-vector/pixel-space-background-set_107791-34717.jpg?semt=ais_hybrid&w=740&q=80'
+
   return {
     address: alchemy.address as `0x${string}`,
-    name: alchemy.contractMetadata.name,
-    symbol: alchemy.contractMetadata.symbol,
-    totalSupply: alchemy.contractMetadata.totalSupply,
-    tokenType: alchemy.contractMetadata.tokenType,
-    description: alchemy.contractMetadata.openSea?.description,
-    imageUrl: alchemy.contractMetadata.openSea?.imageUrl,
-    bannerImageUrl: alchemy.contractMetadata.openSea?.bannerImageUrl,
+    name: alchemy.name,
+    symbol: alchemy.symbol,
+    totalSupply: alchemy.totalSupply,
+    tokenType: alchemy.tokenType,
+
+    description: os?.description,
+    imageUrl,
+    bannerImageUrl: bannerUrl,
+
     marketData: {
-      floorPrice: alchemy.contractMetadata.openSea?.floorPrice,
-      collectionName: alchemy.contractMetadata.openSea?.collectionName,
+      floorPrice: os?.floorPrice,
+      collectionName: os?.collectionName,
     },
+
     socials: {
-      twitterUsername: alchemy.contractMetadata.openSea?.twitterUsername,
-      discordUrl: alchemy.contractMetadata.openSea?.discordUrl,
-      externalUrl: alchemy.contractMetadata.openSea?.externalUrl,
+      twitterUsername: os?.twitterUsername,
+      discordUrl: os?.discordUrl,
+      externalUrl: os?.externalUrl,
     },
   }
 }

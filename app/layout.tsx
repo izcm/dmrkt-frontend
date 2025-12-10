@@ -25,10 +25,14 @@ export default function RootLayout({
         </a>
         <Providers>
           <Header />
-           <a id="forward-main" href="#main" className="sr-only focus:not-sr-only focus:underline px-2">
-              Skip to main content 
-            </a>
-          <div id="page-wrapper" className="w-full p-4 font-mono py-4 mt-8">
+          <a
+            id="forward-main"
+            href="#main"
+            className="sr-only focus:not-sr-only focus:underline px-2"
+          >
+            Skip to main content
+          </a>
+          <div id="page-wrapper" className="w-full min-h-screen p-4 font-mono py-4 mt-8">
             {/* Skip navigation link */}
             {children}
           </div>

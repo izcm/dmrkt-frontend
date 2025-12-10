@@ -8,82 +8,98 @@ export type AlchemyNFTResponse = {
 export type AlchemyNFT = {
   contract: {
     address: string
-  }
-
-  id: {
-    tokenId: string
-    tokenMetadata?: {
-      tokenType?: string
-    }
-  }
-
-  title?: string
-  description?: string
-
-  tokenUri?: {
-    gateway?: string
-    raw?: string
-  }
-
-  media?: Array<{
-    gateway?: string
-    thumbnail?: string
-    raw?: string
-    format?: string
-    bytes?: number
-  }>
-
-  metadata?: {
-    image?: string
-    attributes?: Array<{
-      value?: string
-      trait_type?: string
-    }>
-    name?: string
-    description?: string
-  }
-
-  timeLastUpdated?: string
-
-  contractMetadata?: {
     name?: string
     symbol?: string
     totalSupply?: string
     tokenType?: string
     contractDeployer?: string
     deployedBlockNumber?: number
-    openSea?: {
+    openseaMetadata?: {
       floorPrice?: number
       collectionName?: string
-      description?: string
+      safelistRequestStatus?: string
       imageUrl?: string
-      bannerImageUrl?: string
+      description?: string
       externalUrl?: string
+      twitterUsername?: string
       discordUrl?: string
+      bannerImageUrl?: string
+      lastIngestedAt?: string
     }
-  }
-
-  spamInfo?: {
     isSpam?: string
-    classifications?: string[]
+    spamClassifications?: string[]
   }
-}
 
-const tokenIdToDecimal = (tokenId: string): string => {
-  return tokenId.startsWith('0x') ? BigInt(tokenId).toString() : tokenId
+  tokenId: string
+  tokenType: string
+
+  name?: string
+  description?: string
+
+  image?: {
+    cachedUrl?: string
+    thumbnailUrl?: string
+    pngUrl?: string
+    originalUrl?: string
+  }
+
+  raw?: {
+    tokenUri?: string
+    metadata?: {
+      image?: string
+      name?: string
+      description?: string
+      attributes?: {
+        value?: string
+        trait_type?: string
+      }[]
+    }
+    error?: string
+  }
+
+  animation?: {
+    cachedUrl?: string
+    contentType?: string
+    size?: number
+    orginalUrl?: string // alchemy typo lol
+  }
+
+  collection?: {
+    name?: string
+    slug?: string
+    externalUrl?: string
+    bannerImageUrl?: string
+  }
+
+  tokenUri?: string
+  timeLastUpdated?: string
 }
 
 // Convert Alchemy NFT to local NFT type
 export const toNFT = (alchemy: AlchemyNFT): NFT => {
-  const fmtId = tokenIdToDecimal(alchemy.id.tokenId)
+  const fmtId = alchemy.tokenId.startsWith('0x')
+    ? BigInt(alchemy.tokenId).toString()
+    : alchemy.tokenId
+
+  const image =
+    alchemy.animation?.orginalUrl ||
+    alchemy.animation?.cachedUrl ||
+    alchemy.image?.originalUrl ||
+    alchemy.image?.cachedUrl ||
+    alchemy.image?.thumbnailUrl ||
+    alchemy.image?.pngUrl ||
+    alchemy.raw?.metadata?.image ||
+    alchemy.tokenUri ||
+    null
+
   return {
     contract: alchemy.contract.address as `0x${string}`,
     tokenId: fmtId,
-    name: alchemy.title || alchemy.metadata?.name || `#${fmtId}`,
-    description: alchemy.description || alchemy.metadata?.description,
-    image: alchemy.media?.[0]?.gateway || alchemy.media?.[0]?.thumbnail || alchemy.metadata?.image,
-    tokenType: alchemy.id.tokenMetadata?.tokenType,
-    attributes: alchemy.metadata?.attributes?.map(attr => ({
+    name: alchemy.name || alchemy.raw?.metadata?.name || `#${fmtId}`,
+    description: alchemy.description || alchemy.raw?.metadata?.description,
+    image: image || 'https://cdn-icons-png.flaticon.com/512/9827/9827720.png',
+    tokenType: alchemy.tokenType,
+    attributes: alchemy.raw?.metadata?.attributes?.map(attr => ({
       traitType: attr.trait_type || '',
       value: attr.value || '',
     })),

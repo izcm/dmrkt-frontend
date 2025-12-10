@@ -1,4 +1,6 @@
 // Local Collection type - provider agnostic
+export type AttributeSummary = Record<string, Record<string, number>>
+
 export type Collection = {
   address: `0x${string}`
   name: string

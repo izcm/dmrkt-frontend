@@ -46,6 +46,7 @@ export const CollectionList = ({ collections }: CollectionListProps) => {
                 </div>
 
                 <div className="text-xs text-right">
+                  {/* TODO: spam warning endpoint: https://www.alchemy.com/docs/reference/nft-api-endpoints/nft-api-endpoints/nft-spam-endpoints/is-spam-contract-v-3 */}
                   <span
                     className={`px-2 py-1 rounded text-xs ${
                       col.symbol
