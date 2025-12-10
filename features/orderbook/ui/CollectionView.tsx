@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { Search, ChartArea } from 'lucide-react'
 
@@ -5,28 +7,21 @@ import { NFTGallery, Sidebar } from '@/components/organisms'
 import { TextInput } from '@/components/atoms'
 
 import { Collection, NFT } from '@/types'
+import { CollectionBanner } from '@/components/molecules/CollectionBanner'
 
 interface CollectionViewProps {
   collection: Collection
   nfts: NFT[]
 }
 
+// TODO: make bid should redirect to `create-bid` with contractAddr + isCollectionBid parameters
 export const CollectionView = ({ collection, nfts }: CollectionViewProps) => {
   const contract = collection.address
+  const baseUrl = `/collection/${contract}`
 
   return (
     <div className="flex flex-col gap-4">
-      {/* TOP BANNER */}
-      <div className="flex items-center border border-default rounded-lg px-4 py-2 relative overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-12"
-          style={{
-            backgroundImage: `url(${collection.bannerImageUrl})`,
-          }}
-        />
-        <span className="relative z-10">{collection.name}</span>
-      </div>
-
+      <CollectionBanner collection={collection}/>
       {/* SEARCH INPUT AND LINKS */}
       <div className="flex gap-4">
         <div className="flex-1 relative">
@@ -34,8 +29,9 @@ export const CollectionView = ({ collection, nfts }: CollectionViewProps) => {
           <TextInput />
         </div>
 
-        <button className="btn btn-secondary px-6">Make Collection Order</button>
-
+        <Link href={`${contract}/create-order`}>
+          <button className="btn btn-secondary px-6">Make Collection Bid</button>
+        </Link>
         <Link
           href={`/collection/${contract}/analytics`}
           className="
@@ -51,7 +47,7 @@ export const CollectionView = ({ collection, nfts }: CollectionViewProps) => {
       <div className="flex gap-4">
         <Sidebar />
         <main>
-          <NFTGallery nfts={nfts} />
+          <NFTGallery nfts={nfts} baseUrl={baseUrl} />
         </main>
       </div>
     </div>

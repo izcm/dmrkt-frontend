@@ -8,8 +8,15 @@ export type Collection = {
   description?: string
   imageUrl?: string
   bannerImageUrl?: string
-  floorPrice?: number
-  externalUrl?: string
+  marketData?: {
+    floorPrice?: number
+    collectionName?: string
+  }
+  socials?: {
+    twitterUsername?: string
+    discordUrl?: string
+    externalUrl?: string
+  }
 }
 
 export type Listing = {

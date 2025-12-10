@@ -35,7 +35,14 @@ export const toCollection = (alchemy: AlchemyCollection): Collection => {
     description: alchemy.contractMetadata.openSea?.description,
     imageUrl: alchemy.contractMetadata.openSea?.imageUrl,
     bannerImageUrl: alchemy.contractMetadata.openSea?.bannerImageUrl,
-    floorPrice: alchemy.contractMetadata.openSea?.floorPrice,
-    externalUrl: alchemy.contractMetadata.openSea?.externalUrl,
+    marketData: {
+      floorPrice: alchemy.contractMetadata.openSea?.floorPrice,
+      collectionName: alchemy.contractMetadata.openSea?.collectionName,
+    },
+    socials: {
+      twitterUsername: alchemy.contractMetadata.openSea?.twitterUsername,
+      discordUrl: alchemy.contractMetadata.openSea?.discordUrl,
+      externalUrl: alchemy.contractMetadata.openSea?.externalUrl,
+    },
   }
 }

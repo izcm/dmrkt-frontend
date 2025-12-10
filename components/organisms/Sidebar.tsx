@@ -4,7 +4,7 @@ import { Checkbox, RangeSlider, Select } from '@/components/atoms'
 
 export const Sidebar = () => {
   return (
-     <aside
+    <aside
       className="min-w-[320px] sticky top-1 p-4 border border-default rounded-lg"
       style={{ height: 'calc(100vh - 4px)' }}
     >
