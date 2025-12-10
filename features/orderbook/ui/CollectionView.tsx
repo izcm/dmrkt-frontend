@@ -14,14 +14,19 @@ interface CollectionViewProps {
   nfts: NFT[]
 }
 
-// TODO: make bid should redirect to `create-bid` with contractAddr + isCollectionBid parameters
 export const CollectionView = ({ collection, nfts }: CollectionViewProps) => {
   const contract = collection.address
   const baseUrl = `/collection/${contract}`
 
   return (
     <div className="flex flex-col gap-4">
-      <CollectionBanner collection={collection}/>
+      {/* Skip navigation link */}
+      <a href="#gallery" className="sr-only focus:not-sr-only focus:underline px-2 py-1">
+        Skip to NFT Gallery
+      </a>
+
+      <CollectionBanner collection={collection} />
+
       {/* SEARCH INPUT AND LINKS */}
       <div className="flex gap-4">
         <div className="flex-1 relative">
@@ -32,6 +37,7 @@ export const CollectionView = ({ collection, nfts }: CollectionViewProps) => {
         <Link href={`${contract}/create-order`}>
           <button className="btn btn-secondary px-6">Make Collection Bid</button>
         </Link>
+
         <Link
           href={`/collection/${contract}/analytics`}
           className="
@@ -46,7 +52,9 @@ export const CollectionView = ({ collection, nfts }: CollectionViewProps) => {
 
       <div className="flex gap-4">
         <Sidebar />
-        <main>
+
+        {/* Gallery target */}
+        <main id="gallery" tabIndex={-1}>
           <NFTGallery nfts={nfts} baseUrl={baseUrl} />
         </main>
       </div>

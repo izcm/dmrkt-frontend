@@ -17,9 +17,15 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="cyber-void" suppressHydrationWarning>
       <body suppressHydrationWarning>
+        <a
+          href="#page-wrapper"
+          className="sr-only focus:not-sr-only focus:underline absolute top-2 left-2 z-50"
+        >
+          Skip to content
+        </a>
         <Providers>
           <Header />
-          <div className="w-full p-4 font-mono py-4 mt-8">{children}</div>
+          <div id="page-wrapper" className="w-full p-4 font-mono py-4 mt-8">{children}</div>
           <footer className="text-xs text-muted py-6 text-center">
             © 2025 A2Z Blocks — Humbly built.
           </footer>
