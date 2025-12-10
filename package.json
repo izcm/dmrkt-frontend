@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "format": "prettier --write .",
+    "fmt": "prettier --write .",
     "start": "next start",
     "lint": "eslint"
   },

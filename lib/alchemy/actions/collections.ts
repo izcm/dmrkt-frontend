@@ -1,8 +1,7 @@
-import { AlchemyCollection } from '@/types'
+import { AlchemyCollection } from '../types/collection'
 
-import { ALCHEMY_API_KEY as apiKey } from './constants'
-import { ALCHEMY_ENDPOINT_URL as endpoint } from './constants'
-import { CollectedMetadata } from 'next/dist/build/webpack/loaders/metadata/types'
+import { ALCHEMY_API_KEY as apiKey } from '../constants'
+import { ALCHEMY_ENDPOINT_URL as endpoint } from '../constants'
 
 const baseUrl = `${endpoint}/${apiKey}`
 

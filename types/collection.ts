@@ -1,25 +1,15 @@
-export type AlchemyCollection = {
-  address: string
-  contractMetadata: {
-    name: string
-    symbol: string
-    totalSupply: string
-    tokenType: string
-    contractDeployer: string
-    deployedBlockNumber: number
-    openSea?: {
-      floorPrice?: number
-      collectionName?: string
-      safelistRequestStatus?: string
-      imageUrl?: string
-      description?: string
-      externalUrl?: string
-      twitterUsername?: string
-      discordUrl?: string
-      bannerImageUrl?: string
-      lastIngestedAt?: string
-    }
-  }
+// Local Collection type - provider agnostic
+export type Collection = {
+  address: `0x${string}`
+  name: string
+  symbol: string
+  totalSupply: string
+  tokenType: string
+  description?: string
+  imageUrl?: string
+  bannerImageUrl?: string
+  floorPrice?: number
+  externalUrl?: string
 }
 
 export type Listing = {

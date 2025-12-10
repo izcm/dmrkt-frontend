@@ -1,15 +1,22 @@
-import { NFTGallery } from '@/features/orderbook/ui/NFTGallery'
-import { getCollectionMetadata, getNFTByContract } from '@/lib/alchemy/'
+import { CollectionView } from '@/features/orderbook/ui/CollectionView'
+
+import { getCollectionMetadata, getNFTByContract, toCollection, toNFT } from '@/lib/alchemy'
 
 export default async function CollectionPage(props: { params: Promise<{ contract: string }> }) {
   const { contract } = await props.params
 
-  const collection = await getCollectionMetadata(contract as `0x${string}`)
+  const alchemyCollection = await getCollectionMetadata(contract as `0x${string}`)
+  const collection = toCollection(alchemyCollection)
+
   const nftsObj = await getNFTByContract(contract as `0x${string}`) // includes pagination nextItem field
+
+  const nfts = nftsObj.metas.map(raw => {
+    return toNFT(raw)
+  })
 
   return (
     <main className="flex flex-col gap-4 max-w-7xl mx-auto">
-      <NFTGallery collection={collection} nfts={nftsObj.metas} />
+      <CollectionView collection={collection} nfts={nfts} />
     </main>
   )
 }

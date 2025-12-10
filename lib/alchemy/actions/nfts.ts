@@ -1,9 +1,12 @@
-import { ALCHEMY_API_KEY as apiKey } from './constants'
-import { ALCHEMY_ENDPOINT_URL as endpoint } from './constants'
+import { AlchemyNFT } from '@/lib/alchemy/types/nft'
+import { ALCHEMY_API_KEY as apiKey } from '../constants'
+import { ALCHEMY_ENDPOINT_URL as endpoint } from '../constants'
 
 const baseUrl = `${endpoint}/${apiKey}`
 
-export const getNFTByContract = async (contract: `0x${string}`) => {
+export const getNFTByContract = async (
+  contract: `0x${string}`
+): Promise<{ base: any; metas: AlchemyNFT[] }> => {
   const res = await fetch(`${baseUrl}/getNFTsForContract?contractAddress=${contract}`)
   const data = await res.json()
 

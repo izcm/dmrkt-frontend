@@ -1,2 +1,2 @@
 export * from './collection'
-//export * from './profile'
+export * from './nft'

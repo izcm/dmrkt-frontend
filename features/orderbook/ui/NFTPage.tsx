@@ -5,17 +5,17 @@ import Link from 'next/link'
 import { Search, ChartArea } from 'lucide-react'
 
 import { TextInput } from '@/components/atoms/TextInput'
-import { AlchemyCollection } from '@/types'
-import { AlchemyNFT } from '@/types/nft'
+import { AlchemyNFT } from '@/lib/alchemy/types/nft'
+import { Collection } from '@/types'
 
 interface NFTGalleryProps {
-  collection: AlchemyCollection
+  collection: Collection
   nfts: AlchemyNFT[]
 }
 
 export const NFTGallery = ({ collection, nfts }: NFTGalleryProps) => {
   const { contract } = useParams()
-  const { contractMetadata: metadata } = collection
+
   const contractAddress = Array.isArray(contract) ? contract[0] : contract
 
   return (
@@ -41,34 +41,32 @@ export const NFTGallery = ({ collection, nfts }: NFTGalleryProps) => {
         </Link>
       </div>
 
-      {/* FILTER MENU */}
       <div className="flex gap-4">
-        <div className="w-[320px] p-4 border border-default rounded-lg"></div>
+        {/* FILTER MENU */}
+        <div className="w-[320px] sticky p-4 border border-default rounded-lg"></div>
 
-        <div className='flex-1 flex flex-col gap-4'>
+        <div className="flex-1 flex flex-col gap-4">
           <div className="flex items-center border border-default rounded-lg px-4 py-2 relative overflow-hidden">
             <div
               className="absolute inset-0 bg-cover bg-center opacity-12"
               style={{
-                backgroundImage: `url(${metadata.openSea?.bannerImageUrl})`,
+                backgroundImage: `url(${collection.bannerImageUrl})`,
               }}
             />
-            <span className="relative z-10">{metadata.name}</span>
+            <span className="relative z-10">{collection.name}</span>
           </div>
           {/* NFT DISPLAY */}
           <div className="border border-default rounded-lg">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-              {nfts.map((nft) => {
+              {nfts.map(nft => {
                 const imageUrl =
                   nft.media?.[0]?.gateway ||
                   nft.media?.[0]?.thumbnail ||
                   nft.metadata?.image ||
                   'https://via.placeholder.com/300?text=NFT'
 
-                const title =
-                  nft.title ||
-                  nft.metadata?.name ||
-                  `#${nft.id.tokenId}`
+                const tokenIdDisplay = 1
+                const title = nft.title || nft.metadata?.name || `#${tokenIdDisplay}`
 
                 return (
                   <Link
@@ -77,11 +75,7 @@ export const NFTGallery = ({ collection, nfts }: NFTGalleryProps) => {
                     className="group border border-default rounded-lg overflow-hidden hover:-translate-y-1 transition-transform"
                   >
                     <div className="aspect-square bg-muted/10">
-                      <img
-                        src={imageUrl}
-                        alt={title}
-                        className="w-full h-full object-cover"
-                      />
+                      <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
                     </div>
                     <div className="p-3 border-t border-default">
                       <div className="font-medium truncate group-hover:text-accent transition-colors">

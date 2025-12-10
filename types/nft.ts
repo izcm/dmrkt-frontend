@@ -1,67 +1,32 @@
-export type AlchemyNFTResponse = {
-  nfts: AlchemyNFT[]
-  pageKey?: string
-}
-export type AlchemyNFT = {
-  contract: {
-    address: string
-  }
+import { AlchemyNFT, toNFT as alchemyNFTToNFT } from '@/lib/alchemy/types/nft'
 
-  id: {
-    tokenId: string
-    tokenMetadata?: {
-      tokenType?: string
-    }
-  }
-
-  title?: string
+// Local NFT type - provider agnostic
+export type NFT = {
+  contract: `0x${string}`
+  tokenId: string
+  name?: string
   description?: string
-
-  tokenUri?: {
-    gateway?: string
-    raw?: string
-  }
-
-  media?: Array<{
-    gateway?: string
-    thumbnail?: string
-    raw?: string
-    format?: string
-    bytes?: number
+  image?: string
+  tokenType?: string
+  attributes?: Array<{
+    traitType: string
+    value: string
   }>
+  lastUpdated?: string
+}
 
-  metadata?: {
-    image?: string
-    attributes?: Array<{
-      value?: string
-      trait_type?: string
-    }>
-    name?: string
-    description?: string
-  }
+// this is for later when fallback is implemented (not currently in use)
+enum Provider {
+  ALCHEMY,
+  //MORALIS,
+}
 
-  timeLastUpdated?: string
+const converters = {
+  [Provider.ALCHEMY]: (arg: AlchemyNFT) => alchemyNFTToNFT(arg),
+  // [Provider.MORALIS]: (arg: MoralisNFT) => moralisToNFT(arg),
+}
 
-  contractMetadata?: {
-    name?: string
-    symbol?: string
-    totalSupply?: string
-    tokenType?: string
-    contractDeployer?: string
-    deployedBlockNumber?: number
-    openSea?: {
-      floorPrice?: number
-      collectionName?: string
-      description?: string
-      imageUrl?: string
-      bannerImageUrl?: string
-      externalUrl?: string
-      discordUrl?: string
-    }
-  }
-
-  spamInfo?: {
-    isSpam?: string
-    classifications?: string[]
-  }
+export const toNFT = (provider: Provider, arg: any) => {
+  const fn = converters[provider]
+  return fn(arg)
 }
