@@ -4,7 +4,10 @@ import { Checkbox, RangeSlider, Select } from '@/components/atoms'
 
 export const Sidebar = () => {
   return (
-    <aside className="min-w-[320px] sticky p-4 border border-default rounded-lg">
+     <aside
+      className="min-w-[320px] sticky top-1 p-4 border border-default rounded-lg"
+      style={{ height: 'calc(100vh - 4px)' }}
+    >
       <div className="flex flex-col gap-4">
         <div>
           <h3 className="text-sm font-bold mb-2">Status</h3>
@@ -16,7 +19,7 @@ export const Sidebar = () => {
 
         <div>
           <h3 className="text-sm font-bold mb-2">Price</h3>
-          <RangeSlider min={0} max={100} start={0} end={100} onChange={() => {}} />
+          <RangeSlider min={0} max={100} onChange={() => {}} />
           <div className="text-xs text-muted mt-2">0 - 100 ETH</div>
         </div>
 
