@@ -20,10 +20,6 @@ export const CollectionView = ({ collection, nfts }: CollectionViewProps) => {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Skip navigation link */}
-      <a href="#gallery" className="sr-only focus:not-sr-only focus:underline px-2 py-1">
-        Skip to NFT Gallery
-      </a>
 
       <CollectionBanner collection={collection} />
 
@@ -54,7 +50,7 @@ export const CollectionView = ({ collection, nfts }: CollectionViewProps) => {
         <Sidebar />
 
         {/* Gallery target */}
-        <main id="gallery" tabIndex={-1}>
+        <main id="main" tabIndex={-1}>
           <NFTGallery nfts={nfts} baseUrl={baseUrl} />
         </main>
       </div>

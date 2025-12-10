@@ -18,14 +18,20 @@ export default function RootLayout({
     <html lang="en" data-theme="cyber-void" suppressHydrationWarning>
       <body suppressHydrationWarning>
         <a
-          href="#page-wrapper"
+          href="#forward-main"
           className="sr-only focus:not-sr-only focus:underline absolute top-2 left-2 z-50"
         >
-          Skip to content
+          Skip Header
         </a>
         <Providers>
           <Header />
-          <div id="page-wrapper" className="w-full p-4 font-mono py-4 mt-8">{children}</div>
+           <a id="forward-main" href="#main" className="sr-only focus:not-sr-only focus:underline px-2">
+              Skip to main content 
+            </a>
+          <div id="page-wrapper" className="w-full p-4 font-mono py-4 mt-8">
+            {/* Skip navigation link */}
+            {children}
+          </div>
           <footer className="text-xs text-muted py-6 text-center">
             © 2025 A2Z Blocks — Humbly built.
           </footer>
