@@ -557,7 +557,7 @@ input:focus {
 
 .scrollbar-hide {
   -ms-overflow-style: none; /* IE */
-  scrollbar-width: none;    /* Firefox */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Form inputs — accent color */

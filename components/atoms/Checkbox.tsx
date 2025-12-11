@@ -9,7 +9,6 @@ interface CheckboxProps {
 export function Checkbox({ label, checked, onChange }: CheckboxProps) {
   return (
     <label className="flex items-center gap-3 cursor-pointer select-none relative">
-      
       <div className="relative w-4 h-4 flex items-center justify-center">
         <input
           type="checkbox"
@@ -41,9 +40,7 @@ export function Checkbox({ label, checked, onChange }: CheckboxProps) {
         </span>
       </div>
 
-      <span className="text-sm text-muted peer-hover:text-accent transition-colors">
-        {label}
-      </span>
+      <span className="text-sm text-muted peer-hover:text-accent transition-colors">{label}</span>
     </label>
   )
 }

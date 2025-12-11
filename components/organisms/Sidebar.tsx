@@ -2,6 +2,7 @@
 
 import { Checkbox, RangeSlider, Select } from '@/components/atoms'
 import { ChevronDown } from 'lucide-react'
+import { useState } from 'react'
 
 interface NFTFiltersProps {
   traits: [string, Record<string, number>][]
@@ -10,53 +11,55 @@ interface NFTFiltersProps {
 }
 
 export const Sidebar = ({ traits, filters, setFilters }: NFTFiltersProps) => {
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({})
+
+  const toggleSection = (type: string) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [type]: !prev[type],
+    }))
+  }
   return (
     <aside
-      className="w-[320px] sticky top-1 p-4 bg-surface/40 border border-default rounded-lg overflow-scroll scrollbar-hide"
+      className="w-[400px] sticky top-1 p-4 bg-surface/40 border border-default rounded-lg overflow-scroll scrollbar-hide"
       style={{ height: 'calc(100vh - 4px)' }}
     >
-      <ul>
-        {traits.map(([type, values]) => (
-          <li key={type} className='text-start'>
-            <button className='flex w-full justify-between items-center py-1'>
-              <span>{type}</span>
-              <ChevronDown />
-            </button>
-            {Object.keys(values).map((value, i) => (
-              <Checkbox key={i} label={value} />
-            ))}
-          </li>
-        ))}
-      </ul>
-      <div className="flex flex-col gap-4">
-        <div>
+      {/* MARKETPLACE AVAILABILITY */}
+      <div className="flex flex-col gap-4 mb-4">
+
+       {/* TRAITS */}
+         <div>
           <h3 className="text-sm font-bold mb-2">Status</h3>
           <div className="flex flex-col gap-2">
             <Checkbox label="Buy Now" />
             <Checkbox label="Has Offers" />
           </div>
         </div>
-
-        <div>
-          <h3 className="text-sm font-bold mb-2">Price</h3>
-          <RangeSlider min={0} max={100} onChange={() => {}} />
-          <div className="text-xs text-muted mt-2">0 - 100 ETH</div>
-        </div>
-
-        <div>
-          <h3 className="text-sm font-bold mb-2">Traits</h3>
-          <div className="flex flex-col gap-2">
-            <Checkbox label="Background" />
-            <Checkbox label="Hat" />
-            <Checkbox label="Eyes" />
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-sm font-bold mb-2">Rarity</h3>
-          <Select options={['All', 'Common', 'Rare', 'Epic']} />
-        </div>
-      </div>
+        <ul>
+          {traits.map(([type, values]) => (
+            <li key={type} className="text-start">
+              <button
+                onClick={() => toggleSection(type)}
+                className="btn flex w-full justify-between items-center py-1"
+              >
+                <span>{type}</span>
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform ${openSections[type] ? 'rotate-180' : ''}`}
+                />
+              </button>
+              {openSections[type] && (
+                <ul className="ml-2">
+                  {Object.keys(values).map((value, i) => (
+                    <li className="mb-2">
+                      <Checkbox key={i} label={value} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+       </div>
     </aside>
   )
 }
