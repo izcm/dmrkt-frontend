@@ -30,6 +30,7 @@ export type AlchemyCollection = {
 export const toCollection = (alchemy: AlchemyCollection): Collection => {
   const os = alchemy.openSeaMetadata
 
+  // Try all available image sources in order of preference
   const imageUrl = os?.imageUrl || os?.externalUrl
   const bannerUrl =
     os?.bannerImageUrl ||

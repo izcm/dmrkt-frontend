@@ -32,7 +32,7 @@ export default function RootLayout({
           >
             Skip to main content
           </a>
-          <div id="page-wrapper" className="w-full min-h-screen p-4 font-mono py-4 mt-8">
+          <div id="page-wrapper" className="w-full min-h-screen p-4 font-mono py-4 mt-2">
             {/* Skip navigation link */}
             {children}
           </div>

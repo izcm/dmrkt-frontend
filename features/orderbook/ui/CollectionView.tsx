@@ -6,17 +6,25 @@ import { Search, ChartArea } from 'lucide-react'
 import { NFTGallery, Sidebar } from '@/components/organisms'
 import { TextInput } from '@/components/atoms'
 
-import { Collection, NFT } from '@/types'
+import { AttributeSummary, Collection, NFT } from '@/types'
 import { CollectionBanner } from '@/components/molecules/CollectionBanner'
+import { useState } from 'react'
 
 interface CollectionViewProps {
   collection: Collection
   nfts: NFT[]
+  attributes: AttributeSummary
 }
 
-export const CollectionView = ({ collection, nfts }: CollectionViewProps) => {
+export const CollectionView = ({ collection, nfts, attributes: traits }: CollectionViewProps) => {
+  const [filters, setFilters] = useState({
+    traits: {},
+  })
+
   const contract = collection.address
   const baseUrl = `/collection/${contract}`
+
+  const traitsAsArray = Object.entries(traits)
 
   return (
     <div className="flex flex-col gap-4">
@@ -46,10 +54,10 @@ export const CollectionView = ({ collection, nfts }: CollectionViewProps) => {
       </div>
 
       <div className="flex gap-4">
-        <Sidebar />
+        <Sidebar traits={traitsAsArray} filters={filters} setFilters={setFilters} />
 
         {/* Gallery target */}
-        <main id="main" tabIndex={-1}>
+        <main id="main" tabIndex={-1} className="w-full">
           <NFTGallery nfts={nfts} baseUrl={baseUrl} />
         </main>
       </div>

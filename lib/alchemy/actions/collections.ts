@@ -22,7 +22,8 @@ export const getCollectionAttributes = async (
 
   const res = await fetch(`${url}?contractAddress=${address}`)
   const data = await res.json()
-  return data
+
+  return data.summary
 }
 
 export type Result<T> = { ok: true; data: T } | { ok: false; error: string }

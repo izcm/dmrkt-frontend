@@ -550,6 +550,16 @@ input:focus {
   );
 }
 
+/* globals.css */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE */
+  scrollbar-width: none;    /* Firefox */
+}
+
 /* Form inputs — accent color */
 input[type='checkbox'],
 input[type='radio'],

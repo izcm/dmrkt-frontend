@@ -4,7 +4,11 @@ export const CollectionBanner = ({ collection }: { collection: Collection }) => 
   return (
     <div className="flex items-center h-16 border border-default rounded-lg px-4 py-2 relative overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-4"
+        className="
+          absolute inset-0 
+          bg-cover bg-center 
+          opacity-30 brightness-75
+        "
         style={{
           backgroundImage: `url(${collection.bannerImageUrl})`,
         }}
