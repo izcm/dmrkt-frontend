@@ -26,9 +26,8 @@ export const Sidebar = ({ traits, filters, setFilters }: NFTFiltersProps) => {
     >
       {/* MARKETPLACE AVAILABILITY */}
       <div className="flex flex-col gap-4 mb-4">
-
-       {/* TRAITS */}
-         <div>
+        {/* TRAITS */}
+        <div>
           <h3 className="text-sm font-bold mb-2">Status</h3>
           <div className="flex flex-col gap-2">
             <Checkbox label="Buy Now" />
@@ -50,8 +49,8 @@ export const Sidebar = ({ traits, filters, setFilters }: NFTFiltersProps) => {
               {openSections[type] && (
                 <ul className="ml-2">
                   {Object.keys(values).map((value, i) => (
-                    <li className="mb-2">
-                      <Checkbox key={i} label={value} />
+                    <li key={`${value}-${i}`} className="mb-2">
+                      <Checkbox label={value} />
                     </li>
                   ))}
                 </ul>
@@ -59,7 +58,7 @@ export const Sidebar = ({ traits, filters, setFilters }: NFTFiltersProps) => {
             </li>
           ))}
         </ul>
-       </div>
+      </div>
     </aside>
   )
 }

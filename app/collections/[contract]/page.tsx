@@ -14,7 +14,11 @@ export default async function CollectionPage(props: { params: Promise<{ contract
   // + use totalsupply to get number of NFTs and [Batch] for pagination
   const nftsRes = await getNFTByContract(contract)
 
-  const collection = toCollection(collectionRes)
+  if (!collectionRes.ok) {
+    return <main><div>Failed to load collection</div></main>
+  }
+
+  const collection = toCollection(collectionRes.data)
   const nfts = nftsRes.metas.map(raw => {
     return toNFT(raw)
   })

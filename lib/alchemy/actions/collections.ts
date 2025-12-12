@@ -4,15 +4,18 @@ import { AttributeSummary } from '@/types'
 import { ALCHEMY_API_KEY as apiKey } from '../constants'
 import { ALCHEMY_ENDPOINT_URL as endpoint } from '../constants'
 
-export const getCollectionMetadata = async (address: `0x${string}`): Promise<AlchemyCollection> => {
+export const getCollectionMetadata = async (
+  address: `0x${string}`
+): Promise<Result<AlchemyCollection>> => {
   const url = `${endpoint}/nft/v3/${apiKey}/getContractMetadata?contractAddress=${address}`
 
-  const res = await fetch(url)
-  if (!res.ok) throw new Error(`Alchemy failed ${res.status}`)
-
-  const data = await res.json()
-
-  return data
+  try {
+    const res = await fetch(url)
+    const data = await res.json()
+    return { ok: true, data }
+  } catch (err) {
+    return { ok: false, error: `Alchemy failed: ${err}` }
+  }
 }
 
 export const getCollectionAttributes = async (

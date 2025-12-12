@@ -17,9 +17,7 @@ export const NFTCard = ({ nft }: { nft: NFT }) => {
         <img src={src} alt={nft.name} className="w-full h-full object-cover" />
       </div>
       <div className="p-3 border-t border-default">
-        <div className="truncate group-hover:text-accent transition-colors">
-          {nft.name}
-        </div>
+        <div className="truncate group-hover:text-accent transition-colors">{nft.name}</div>
       </div>
     </div>
   )

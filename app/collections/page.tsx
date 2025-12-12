@@ -8,9 +8,16 @@ import { getCollectionMetadata } from '@/lib/alchemy'
 
 export default async function BrowseCollectionsPage() {
   // TODO: update this to use https://www.alchemy.com/docs/reference/nft-api-endpoints/nft-api-endpoints/nft-metadata-endpoints/get-contract-metadata-batch-v-3
-  const alchemyCollections = await Promise.all(
-    popularEthCollections.map(c => getCollectionMetadata(c.address))
-  )
+  const alchemyCollections = (await Promise.all(
+    popularEthCollections.map(async c => {
+      const res = await getCollectionMetadata(c.address)
+      return res.ok ? res.data : null
+    })
+  )).filter((c) => c !== null)
+
+  if(alchemyCollections.length == 0){
+    return <div>Error fetching collections...</div>
+  }
 
   const collections = alchemyCollections.map(c => {
     return toCollection(c)
