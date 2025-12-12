@@ -38,7 +38,7 @@ export const CollectionView = ({ collection, nfts, attributes: traits }: Collect
         </div>
 
         <Link href={`${contract}/create-order`}>
-          <button className="btn btn-secondary px-6">Make Collection Bid</button>
+          <button className="btn btn-secondary px-6">Make Collection Order</button>
         </Link>
 
         <Link

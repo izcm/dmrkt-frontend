@@ -4,15 +4,15 @@ import { AlchemyNFT, toNFT as alchemyNFTToNFT } from '@/lib/alchemy/types/nft'
 export type NFT = {
   contract: `0x${string}`
   tokenId: string
-  name?: string
+  name: string
   description?: string
-  image?: string
-  tokenType?: string
-  attributes?: Array<{
+  image: string
+  tokenType: string
+  attributes: Array<{
     traitType: string
     value: string
   }>
-  lastUpdated?: string
+  lastUpdated: string
 }
 
 // this is for later when fallback is implemented (not currently in use)

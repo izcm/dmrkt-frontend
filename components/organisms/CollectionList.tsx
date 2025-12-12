@@ -14,7 +14,7 @@ export const CollectionList = ({ collections }: CollectionListProps) => {
       {collections.map((col, i) => {
         return (
           <li key={i}>
-            <Link href={`/collection/${col.address}`}>
+            <Link href={`/collections/${col.address}`}>
               <div
                 role="button"
                 className="grid grid-cols-[auto_1fr_120px_100px_100px] items-center text-start gap-4 py-4 px-4 hover-lift cursor-pointer group focus:outline-none focus:bg-surface/40 focus:border-accent"

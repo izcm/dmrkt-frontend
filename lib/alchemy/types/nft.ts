@@ -50,8 +50,8 @@ export type AlchemyNFT = {
       name?: string
       description?: string
       attributes?: {
-        value?: string
-        trait_type?: string
+        value: string
+        trait_type: string
       }[]
     }
     error?: string
@@ -82,14 +82,10 @@ export const toNFT = (alchemy: AlchemyNFT): NFT => {
     : alchemy.tokenId
 
   const image =
-    alchemy.animation?.orginalUrl ||
-    alchemy.animation?.cachedUrl ||
     alchemy.image?.originalUrl ||
     alchemy.image?.cachedUrl ||
     alchemy.image?.thumbnailUrl ||
     alchemy.image?.pngUrl ||
-    alchemy.raw?.metadata?.image ||
-    alchemy.tokenUri ||
     null
 
   return {
@@ -98,11 +94,12 @@ export const toNFT = (alchemy: AlchemyNFT): NFT => {
     name: alchemy.name || alchemy.raw?.metadata?.name || `#${fmtId}`,
     description: alchemy.description || alchemy.raw?.metadata?.description,
     image: image || 'https://cdn-icons-png.flaticon.com/512/9827/9827720.png',
-    tokenType: alchemy.tokenType,
-    attributes: alchemy.raw?.metadata?.attributes?.map(attr => ({
-      traitType: attr.trait_type || '',
-      value: attr.value || '',
-    })),
-    lastUpdated: alchemy.timeLastUpdated,
+    tokenType: alchemy.tokenType || 'Unknown',
+    attributes:
+      alchemy.raw?.metadata?.attributes?.map(attr => ({
+        traitType: attr.trait_type,
+        value: attr.value,
+      })) || [],
+    lastUpdated: alchemy.timeLastUpdated || 'Unknown',
   }
 }

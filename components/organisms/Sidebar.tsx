@@ -21,8 +21,8 @@ export const Sidebar = ({ traits, filters, setFilters }: NFTFiltersProps) => {
   }
   return (
     <aside
-      className="w-[400px] sticky top-1 p-4 bg-surface/40 border border-default rounded-lg overflow-scroll scrollbar-hide"
-      style={{ height: 'calc(100vh - 4px)' }}
+      className="w-[400px] sticky top-2 p-4 bg-surface/40 border border-default rounded-lg overflow-scroll scrollbar-hide"
+      style={{ height: 'calc(100vh - 16px)' }}
     >
       {/* MARKETPLACE AVAILABILITY */}
       <div className="flex flex-col gap-4 mb-4">
