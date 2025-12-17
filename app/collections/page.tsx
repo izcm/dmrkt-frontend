@@ -1,21 +1,23 @@
-import { CollectionFilters } from '@/components/molecules/CollectionFilters'
+import { CollectionFilters } from '@/components/organisms/sidebar-filters/CollectionFilters'
 import { CollectionList } from '@/components/organisms/CollectionList'
 
-import { popularEthCollections } from '@/types/mock/mockCollectionsAddresses'
+import { popularEthCollections } from '@/dev/mock/mockCollectionsAddresses'
 import { toCollection } from '@/lib/alchemy/types/collection'
 
 import { getCollectionMetadata } from '@/lib/alchemy'
 
 export default async function BrowseCollectionsPage() {
   // TODO: update this to use https://www.alchemy.com/docs/reference/nft-api-endpoints/nft-api-endpoints/nft-metadata-endpoints/get-contract-metadata-batch-v-3
-  const alchemyCollections = (await Promise.all(
-    popularEthCollections.map(async c => {
-      const res = await getCollectionMetadata(c.address)
-      return res.ok ? res.data : null
-    })
-  )).filter((c) => c !== null)
+  const alchemyCollections = (
+    await Promise.all(
+      popularEthCollections.map(async c => {
+        const res = await getCollectionMetadata(c.address)
+        return res.ok ? res.data : null
+      })
+    )
+  ).filter(c => c !== null)
 
-  if(alchemyCollections.length == 0){
+  if (alchemyCollections.length == 0) {
     return <div>Error fetching collections...</div>
   }
 

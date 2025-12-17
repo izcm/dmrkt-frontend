@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import React from 'react'
 import { useAccount, useSignTypedData } from 'wagmi'
 
 import { parseEther } from 'viem'

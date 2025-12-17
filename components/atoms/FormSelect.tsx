@@ -43,7 +43,7 @@ export function FormSelect({ options, onChange, defaultValue }: SelectProps) {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full border border-default rounded px-3 py-2 bg-surface text-left flex items-center justify-between hover:border-accent/50 transition-colors"
+        className="w-full border border-default rounded px-3 py-2 text-left flex items-center justify-between hover:border-accent/50 transition-colors"
       >
         <span>{selectedLabel}</span>
         <span className="text-xs">▼</span>

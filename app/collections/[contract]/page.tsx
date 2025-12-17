@@ -15,7 +15,11 @@ export default async function CollectionPage(props: { params: Promise<{ contract
   const nftsRes = await getNFTByContract(contract)
 
   if (!collectionRes.ok) {
-    return <main><div>Failed to load collection</div></main>
+    return (
+      <main>
+        <div>Failed to load collection</div>
+      </main>
+    )
   }
 
   const collection = toCollection(collectionRes.data)

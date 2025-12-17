@@ -1,0 +1,18 @@
+'use client'
+
+import { ReactNode } from 'react'
+
+type SidebarContainerProps = {
+  children: ReactNode
+}
+
+export const SidebarContainer = ({ children }: SidebarContainerProps) => {
+  return (
+    <aside
+      className="w-[360px] sticky top-2 p-4 border border-default rounded-lg overflow-scroll scrollbar-hide"
+      style={{ height: 'calc(100vh - 16px)' }}
+    >
+      {children}
+    </aside>
+  )
+}

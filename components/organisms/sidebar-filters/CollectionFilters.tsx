@@ -5,23 +5,17 @@ import { TextInput } from '@/components/atoms/TextInput'
 import { RangeSlider } from '@/components/atoms/RangeSlider'
 import { Checkbox } from '@/components/atoms/Checkbox'
 import { FormSelect } from '@/components/atoms/FormSelect'
+import { SidebarContainer } from '../../atoms/SidebarContainer'
 
 export function CollectionFilters() {
   return (
-    <div className="min-w-[240px] p-4 rounded-lg border border-default">
-      <div className="flex-1 relative">
+    <SidebarContainer>
+      <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
         <TextInput />
       </div>
-
       {/* Filters */}
       <div className="mt-6 flex flex-col gap-4">
-        {/* Price Range */}
-        <div className="flex flex-col gap-2">
-          <label className="text-xs font-semibold text-muted">Price Range</label>
-          <RangeSlider min={0} max={100} />
-        </div>
-
         {/* Collection Type */}
         <div className="flex flex-col gap-2">
           <label className="text-xs font-semibold text-muted">Type</label>
@@ -59,6 +53,6 @@ export function CollectionFilters() {
           />
         </div>
       </div>
-    </div>
+    </SidebarContainer>
   )
 }
