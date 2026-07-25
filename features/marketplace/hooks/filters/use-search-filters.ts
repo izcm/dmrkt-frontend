@@ -6,7 +6,7 @@ import type { Hex } from '@/domain/shared/eth'
 export const DEFAULT_FILTERS: Record<TabName, Record<string, string[]>> = {
   // orders: { status: ['active'] },
   orders: { status: ['active'] },
-  trades: {},
+  trades: { sortField: ['timestamp'] },
   nfts: { sortField: ['tokenId'], sortDir: ['asc'] },
 }
 
