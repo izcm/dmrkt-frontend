@@ -1,6 +1,7 @@
 import type { Tx } from '@/app/providers/TxProvider'
 import { useTx } from '@/app/providers/TxProvider'
 import { cn } from '@/lib/utils/cn'
+import { PillBtn } from '@/ui/atoms/PillBtn'
 
 type Props = {
   onNavigateToTx: (tx: Tx) => void
@@ -32,21 +33,17 @@ export function TxTracker({
       : 'border-white/15 text-subtle bg-white/5 hover:bg-white/10 hover:border-white/30 hover:text-fg'
 
   return (
-    <button
+    <PillBtn
       key={executed.length}
       disabled={disabled}
-      className={cn(
-        'flex items-center gap-2 rounded-full border border-black px-3 py-1 text-xs cursor-pointer transition-all duration-150 active:scale-[0.97]',
-        stateClass,
-        className
-      )}
+      className={cn(stateClass, className)}
       onClick={() => showTxs(onNavigateToTx)}
     >
       <PulseDot active={pending.length > 0} />
       <span>
         view {label} ({executed.length})
       </span>
-    </button>
+    </PillBtn>
   )
 }
 

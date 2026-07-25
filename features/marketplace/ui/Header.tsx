@@ -1,22 +1,24 @@
 'use client'
 import { ReactNode } from 'react'
+import { useSwitchChain } from 'wagmi'
+
 import dynamic from 'next/dynamic'
 
 import type { Tx } from '@/app/providers/TxProvider'
 
 import type { Hex } from '@/domain/shared/eth'
 
+import { cn } from '@/lib/utils/cn'
 import { truncateHex } from '@/lib/utils/hex'
 import { getChainConfig } from '@/lib/blockchain'
 
 import { useWallet } from '@/features/wallet/hooks/use-wallet'
 
 import { Backpack, Menu, Settings } from '@/ui/icons'
-import { Spinner, Copyable } from '@/ui/atoms'
+import { Spinner, Copyable, PillBtn } from '@/ui/atoms'
 import { Popover } from '@/ui/molecules'
 
 import { TxTracker } from '../../realtime/ui/TxTracker'
-import { cn } from '@/lib/utils/cn'
 
 const WalletWidget = dynamic(
   () => import('../../wallet/ui/WalletWidget').then(m => m.WalletWidget),
@@ -77,16 +79,31 @@ export function HeaderMobileStatus({
   return (
     <>
       {!isConnected && (
-        <div className="md:hidden -mx-4 mb-1 bg-failure/10 py-1.5 text-center text-failure text-sm">
+        <div className="md:hidden -mx-4 mb-1 bg-warning/10 py-1.5 text-center text-warning text-sm">
           no wallet connected
         </div>
       )}
       {isConnected && wrongChainId && !isResolving && (
-        <div className="md:hidden -mx-4 mb-1 bg-failure/10 py-1.5 text-center text-failure text-sm">
-          wrong chainId - switch to {chainId}
+        <div className="md:hidden -mx-4 mb-1 bg-none py-1.5 mx-auto  text-failure text-sm">
+          <SwitchChainBtn chainId={chainId} />
         </div>
       )}
     </>
+  )
+}
+
+export function SwitchChainBtn({ chainId }: { chainId: number }) {
+  const { switchChain } = useSwitchChain()
+  const chainName = getChainConfig(chainId)?.name
+
+  return (
+    <PillBtn
+      color="var(--warning)"
+      className={'bg-current/8 hover:bg-current/20'}
+      onClick={() => switchChain({ chainId })}
+    >
+      wrong chainId – switch to {chainName}
+    </PillBtn>
   )
 }
 
@@ -281,7 +298,9 @@ function StatusSection({
         {!isConnected ? (
           <span className="text-failure text-sm">no wallet connected</span>
         ) : wrongChainId && !isResolving ? (
-          <span className="text-failure text-sm">wrong chainId - switch to {chainId}</span>
+          <>
+            <SwitchChainBtn chainId={chainId} />
+          </>
         ) : (
           // hide inventory for md screens and below
           <div className="flex items-center justify-center gap-2 text-accent text-sm">
