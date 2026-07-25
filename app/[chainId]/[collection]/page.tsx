@@ -18,7 +18,7 @@ export default async function Page({
   const baseFilters = { chainId: [chainId], collection: [collection] }
 
   const [nftCall, listingCall, tradeCall, collectionCall] = await Promise.all([
-    getDmrktNFTs({ filters: baseFilters }),
+    getDmrktNFTs({ filters: { ...baseFilters, sortField: ['tokenId'], sortDir: ['asc'] } }),
     getDmrktListings({ filters: { ...baseFilters, status: ['active'] } }),
     getDmrktTrades({ filters: baseFilters }),
     getDmrktNFTCollection(Number(chainId), collection),

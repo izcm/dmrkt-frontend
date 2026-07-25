@@ -45,8 +45,9 @@ describe('useSearchFilters', () => {
     })
 
     it('only updates the active tab, not other tabs', () => {
+      const existing = result.current.filters
       act(() => result.current.handleSearch('status=active'))
-      otherTabs.forEach(tab => expect(filters(tab)).toEqual({}))
+      otherTabs.forEach(tab => expect(filters(tab)).toMatchObject(existing[tab]))
     })
   })
 

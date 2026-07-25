@@ -1,5 +1,7 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { FIELD_ALIASES, normalizeKeys, resolveValue, toSearchParams } from '../param-mapper'
+
+import * as fieldConfig from '@/features/marketplace/lib/field-config'
 
 describe('normalizeKeys', () => {
   it.each(Object.entries(FIELD_ALIASES))('maps %s -> %s', (alias, key) => {
@@ -88,6 +90,16 @@ describe('toSearchParams', () => {
     it('returns empty params for an empty input', () => {
       const params = toSearchParams({})
       expect(params.toString()).toEqual('')
+    })
+
+    describe("when key is 'sortField'", () => {
+      it('resolves value by lookup up field name', () => {
+        const fieldResolver = vi.spyOn(fieldConfig, 'resolveFieldName')
+        const params = toSearchParams({ sortField: ['tokenid'] })
+
+        expect(fieldResolver).toHaveBeenCalled()
+        expect(params.getAll('sortField')).toEqual(['tokenId'])
+      })
     })
   })
 })

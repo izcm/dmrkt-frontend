@@ -27,7 +27,8 @@ export function toSearchParams(filters: Record<string, string[]>) {
       }
     } else {
       for (const val of vals) {
-        params.append(key, resolveValue(key, val).replace(/_/g, ' '))
+        const resolved = key === 'sortField' ? resolveFieldName(val) : resolveValue(key, val)
+        params.append(key, resolved.replace(/_/g, ' '))
       }
     }
   }

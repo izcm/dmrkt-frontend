@@ -6,12 +6,12 @@ function Row({ label, value, copy }: { label: string; value: React.ReactNode; co
   return (
     <div
       className={`
-        flex flex-col md:flex-row md:justify-between md:items-center py-1.5 md:py-1 gap-0.5 md:gap-4
+        flex flex-col  md:flex-row md:justify-between md:items-center py-1.5 md:py-1 gap-0.5 md:gap-4
         ${copy ? ' hover:text-accent-string transition' : ''}
       `}
       onClick={() => copy && navigator.clipboard.writeText(copy)}
     >
-      <span className="text-sm font-mono text-accent">{label}</span>
+      <span className="text-sm font-mono text-accent whitespace-nowrap">{label}</span>
       <span className="text-sm text-subtle md:text-right">{value}</span>
     </div>
   )
@@ -35,6 +35,18 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <h3 className="text-[11px] text-subtle uppercase tracking-widest">{title}</h3>
       {children}
     </div>
+  )
+}
+
+function AvailableFieldsSection() {
+  return (
+    <Section title="available fields">
+      <Row
+        label="orders, trades"
+        value="any field in the details panel is filterable + sortable — match casing or use lowercase"
+      />
+      <Row label="nfts" value="trait and tokenId only" />
+    </Section>
   )
 }
 
@@ -133,11 +145,7 @@ export function Manual({ initialTab = 'shortcuts' }: { initialTab?: Tab } = {}) 
             <Row label="me" value="replaced with your address" copy="maker=me" />
           </Section>
 
-          <Section title="available fields">
-            <div className="text-sm text-muted">
-              any field in the details panel is filterable — match casing or use lowercase
-            </div>
-          </Section>
+          <AvailableFieldsSection />
 
           <Section title="special syntax">
             <Row

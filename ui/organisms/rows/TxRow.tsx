@@ -25,7 +25,7 @@ export function TxRow({ tx, onClick, disabled }: Props) {
 
   return (
     <div className="text-start text-sm" onClick={onClick}>
-      <div className="flex flex-col gap-2 sm:grid sm:grid-cols-[auto_88px_80px_1fr_142px] sm:items-center sm:gap-6 p-4">
+      <div className="flex flex-col gap-2 sm:grid sm:grid-cols-[auto_88px_80px_1fr_120px] sm:items-center sm:gap-6 p-4">
         <div className="flex items-center gap-2 sm:contents">
           <StatusIcon status={tx.status} />
 

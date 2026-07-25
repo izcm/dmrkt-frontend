@@ -7,7 +7,7 @@ export const DEFAULT_FILTERS: Record<TabName, Record<string, string[]>> = {
   // orders: { status: ['active'] },
   orders: { status: ['active'] },
   trades: {},
-  nfts: {},
+  nfts: { sortField: ['tokenId'], sortDir: ['asc'] },
 }
 
 export const DEFAULT_MINE_FLAG: Record<TabName, boolean> = {
@@ -24,7 +24,11 @@ export const DEFAULT_MINE_FLAG: Record<TabName, boolean> = {
  *  - handleSearch takes string, parses it to { tokenId: ["1", "2", "3"]}
  *  - handleSearch updates filters to include the new pair
  */
-export function useSearchFilters(tab: TabName, user?: Hex) {
+export function useSearchFilters(
+  tab: TabName,
+  user?: Hex,
+  defaultFilters: Record<TabName, Record<string, string[]>> = DEFAULT_FILTERS
+) {
   const [filters, setFilters] = useState<Record<TabName, Record<string, string[]>>>(DEFAULT_FILTERS)
 
   // tracks which tabs have active "mine" filter

@@ -63,7 +63,10 @@ export function SimulationState({ chainId, collections, collectionStats }: Initi
             title={c.name}
             subtitle={c.symbol}
             endContent={
-              <LabeledValue label="sepolia" value={<Copyable value={addrShort(c.address)} />} />
+              <LabeledValue
+                label="sepolia"
+                value={<Copyable value={c.address}>{addrShort(c.address)}</Copyable>}
+              />
             }
           />
           <div className="cursor-pointer">

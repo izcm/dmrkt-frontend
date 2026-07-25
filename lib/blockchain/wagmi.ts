@@ -57,7 +57,6 @@ const connectors = projectId
     )
   : [injected()]
 
-console.log(connectors)
 export const wagmiConfig = createConfig({
   chains: configuredChains as unknown as [ChainExtras, ...ChainExtras[]],
 
