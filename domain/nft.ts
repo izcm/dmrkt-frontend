@@ -1,7 +1,6 @@
-import { NFT_PLACEHOLDER_IMAGE } from './constants/placeholders'
-
 export { PLACEHOLDER_NFT } from './constants/placeholders'
 
+import { NFT_PLACEHOLDER_IMAGE } from './constants/placeholders'
 import type { Hex } from './shared/eth'
 
 export type NFTAttribute = {

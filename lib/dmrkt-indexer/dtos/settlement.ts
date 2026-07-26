@@ -2,6 +2,7 @@ import type { Hex } from '@/domain/shared/eth'
 import type { Trade } from '@/domain/trade'
 
 import { type NFTCollectionDTO, toNFTCollection } from './nft-collection'
+import { type NFTDTO, toNFT } from './nft'
 import { type OrderDTO, toListing } from './order'
 
 export type SettlementDTO = {
@@ -35,6 +36,7 @@ export type SettlementDTO = {
 
   nftCollection?: NFTCollectionDTO | null
   order?: OrderDTO | null
+  nft?: NFTDTO | null
 
   createdAt: number
 }
@@ -47,6 +49,7 @@ export function toTrade(dto: SettlementDTO): Trade {
     price: BigInt(dto.price),
 
     nftCollection: dto.nftCollection ? toNFTCollection(dto.nftCollection) : undefined,
+    nft: dto.nft ? toNFT(dto.nft) : undefined,
 
     listing: dto.order ? toListing(dto.order) : undefined,
 

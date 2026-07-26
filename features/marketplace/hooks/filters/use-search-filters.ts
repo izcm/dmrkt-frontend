@@ -29,7 +29,7 @@ export function useSearchFilters(
   user?: Hex,
   defaultFilters: Record<TabName, Record<string, string[]>> = DEFAULT_FILTERS
 ) {
-  const [filters, setFilters] = useState<Record<TabName, Record<string, string[]>>>(DEFAULT_FILTERS)
+  const [filters, setFilters] = useState<Record<TabName, Record<string, string[]>>>(defaultFilters)
 
   // tracks which tabs have active "mine" filter
   const [mineFlag, setMineFlag] = useState<Record<TabName, boolean>>(DEFAULT_MINE_FLAG)
