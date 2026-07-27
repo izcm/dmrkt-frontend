@@ -53,7 +53,7 @@ export function EntityRow({
         imageSize={64}
         imageBadge={imageBadge}
         endContent={endContent}
-        classNames="md:min-h-[64px] [&_[data-slot=title]]:text-base md:[&_[data-slot=image]]:!w-[50px] md:[&_[data-slot=image]]:!h-[50px]"
+        className="md:min-h-[64px] [&_[data-slot=title]]:text-base md:[&_[data-slot=image]]:!w-[50px] md:[&_[data-slot=image]]:!h-[50px]"
       />
 
       <div className="md:hidden px-2">

@@ -9,7 +9,7 @@ type Props = {
   endContent?: ReactNode
   imageBadge?: ReactNode
   imageSize?: number
-  classNames?: string
+  className?: string
 }
 
 export function ImageRow({
@@ -19,10 +19,10 @@ export function ImageRow({
   endContent,
   imageBadge,
   imageSize = 50,
-  classNames,
+  className,
 }: Props) {
   return (
-    <div className={cn('grid grid-cols-[auto_1fr_auto] items-center gap-4 py-1 px-2', classNames)}>
+    <div className={cn('grid grid-cols-[auto_1fr_auto] items-center gap-4 py-1 px-2', className)}>
       <div data-slot="image-wrap" className="relative shrink-0">
         <Image
           data-slot="image"

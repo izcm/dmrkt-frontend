@@ -57,7 +57,7 @@ export function SimulationState({ chainId, collections, collectionStats }: Initi
     <Gallery<NFTCollection>
       items={collections}
       galleryItem={c => (
-        <div className="flex flex-col md:flex-row md:items-center p-1 md:p-0 cursor-pointer">
+        <div className="flex flex-col md:flex-row md:items-center p-1 md:p-0 cursor-pointer hover:bg-white/8">
           <ImageRow
             image={`/collection_banners/${c.symbol}.svg`}
             title={c.name}
