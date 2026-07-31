@@ -19,6 +19,7 @@ export const LINK_LABELS: Record<string, string> = {
 
 export function TxRow({ tx, onClick, disabled }: Props) {
   const [expanded, setExpanded] = useState(false)
+
   const shortHash = `${tx.hash.slice(0, 6)}…${tx.hash.slice(-4)}`
   const error = tx.status === 'failed' ? tx.error : undefined
   const isTruncated = error && error.length > ERROR_TRUNCATE

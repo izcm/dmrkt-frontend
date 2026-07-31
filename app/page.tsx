@@ -19,7 +19,7 @@ export default async function Page() {
   })
 
   const parentClasses =
-    'min-h-screen flex flex-col gap-4 max-w-4xl items-center justify-center mx-auto px-4 fade-in'
+    'min-h-screen flex flex-col gap-4 max-w-4xl items-center justify-center mx-auto px-2 my-2 fade-in'
 
   if (!collectionCall.ok) {
     return (
@@ -83,7 +83,7 @@ export default async function Page() {
           deterministic, making every run fully reproducible.
         </p>
 
-        <p className="hidden md:block">
+        <p>
           The linked walkthrough shows an early, simpler version of the simulation. A more recent
           version, alongside the indexer and frontend app, can be run locally;{' '}
           <a
@@ -102,11 +102,11 @@ export default async function Page() {
             href="https://www.youtube.com/watch?v=YXtO_S2THTg"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:inline text-accent/90 underline"
+            className="text-accent/90 underline"
           >
             walkthrough
           </a>
-          <span className="hidden md:inline text-muted">·</span>
+          <span className="text-muted">·</span>
           <a
             href="https://sepolia.etherscan.io/address/0xA1b083adA5Ff1252aCb6b119813B5054D3eB6AEB"
             target="_blank"
@@ -117,9 +117,7 @@ export default async function Page() {
           </a>
         </div>
 
-        <p className="md:hidden text-sm text-muted text-center">
-          NB: works on mobile, made for desktop.
-        </p>
+        <p className="text-sm md:hidden text-accent-weak">NB: works on mobile, made for desktop.</p>
       </div>
 
       <SimulationState
