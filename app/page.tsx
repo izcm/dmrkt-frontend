@@ -19,7 +19,7 @@ export default async function Page() {
   })
 
   const parentClasses =
-    'min-h-screen flex flex-col gap-4 max-w-4xl items-center justify-center mx-auto px-2 my-2 fade-in'
+    'min-h-[100dvh] flex flex-col gap-4 max-w-4xl items-center justify-center mx-auto px-2 fade-in'
 
   if (!collectionCall.ok) {
     return (
@@ -84,17 +84,19 @@ export default async function Page() {
         </p>
 
         <p>
-          The linked walkthrough shows an early, simpler version of the simulation. A more recent
-          version, alongside the indexer and frontend app, can be run locally;{' '}
-          <a
-            href="https://github.com/izcm/dmrkt-demo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent/90 underline"
-          >
-            clone this repo
-          </a>
-          .
+          The linked walkthrough shows an early, simpler version of the simulation.{' '}
+          <span className="hidden md:block">
+            A more recent version, alongside the indexer and frontend app, can be run locally;{' '}
+            <a
+              href="https://github.com/izcm/dmrkt-demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent/90 underline"
+            >
+              clone this repo
+            </a>
+            .{' '}
+          </span>
         </p>
 
         <div className="flex gap-3">
