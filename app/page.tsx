@@ -19,7 +19,7 @@ export default async function Page() {
   })
 
   const parentClasses =
-    'min-h-[100dvh] flex flex-col gap-4 max-w-4xl items-center justify-center mx-auto px-2 fade-in'
+    'min-h-screen flex flex-col gap-4 max-w-4xl items-center justify-center mx-auto fade-in'
 
   if (!collectionCall.ok) {
     return (
