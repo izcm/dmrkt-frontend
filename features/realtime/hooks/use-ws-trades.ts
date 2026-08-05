@@ -1,11 +1,12 @@
 import { useCallback } from 'react'
+import { useWsSub, type WsSubProps } from '@a2zb/react'
 
 import { on } from '@/lib/realtime/ws'
 import { getDmrktTrade } from '@/lib/dmrkt-indexer/actions/dmrkt.get'
 
-import { useWsSub, type WsSubProps } from './use-ws-sub'
+import type { TabResource } from '@/features/tab-config'
 
-export function useWsTrades({ addItem, updateItem }: WsSubProps) {
+export function useWsTrades({ addItem, updateItem }: WsSubProps<TabResource>) {
   useWsSub(
     { addItem, updateItem },
     useCallback(

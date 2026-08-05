@@ -1,18 +1,18 @@
 import { useCallback } from 'react'
+import { useWsSub, type WsSubProps } from '@a2zb/react'
 
 import { on } from '@/lib/realtime/ws'
 import { getDmrktListing } from '@/lib/dmrkt-indexer/actions/dmrkt.get'
 
 import type { ListingStatus } from '@/domain/listing'
-
-import { useWsSub, type WsSubProps } from './use-ws-sub'
+import { TabResource } from '@/features/tab-config'
 
 const statusMap = {
   'order.cancelled': 'cancelled',
   'settlement.created': 'filled',
 }
 
-export function useWsOrders({ addItem, updateItem }: WsSubProps) {
+export function useWsOrders({ addItem, updateItem }: WsSubProps<TabResource>) {
   useWsSub(
     { addItem, updateItem },
     useCallback(
