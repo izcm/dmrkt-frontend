@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@a2zb/abis": "^1.0.0",
+    "@a2zb/react-wagmi": "file:../../izblocks/shared-packages/react-wagmi",
+    "@a2zb/viem": "file:../../izblocks/shared-packages/viem",
     "@rainbow-me/rainbowkit": "^2.2.1",
     "@tanstack/react-query": "^5.59.16",
     "chart.js": "^4.5.1",
