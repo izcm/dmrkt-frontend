@@ -5,7 +5,7 @@ This app was made to serve as a component of the `dmrkt` interactive Web3 demo. 
 NFT marketplace frontend built with Next.js, wagmi/viem, and RainbowKit. Orders are signed
 off-chain (EIP-712) and matched against an on-chain marketplace contract, with live data served by the [dmrkt indexer](#).
 
-> [!INFO]
+> [!NOTE]
 > Reusable components, hooks, and logic are being extracted into standalone `npm` packages at [izcm/iz-packages](https://github.com/izcm/iz-packages), where they'll be documented once the extraction is complete.
 >
 > Until then, this README stays intentionally light on those details.
