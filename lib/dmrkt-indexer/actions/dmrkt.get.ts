@@ -1,4 +1,4 @@
-import type { Result } from '@/lib/utils/http'
+import { fetchJSON, type Result } from '@a2zb/lib'
 
 import type { Listing } from '@/domain/listing'
 import type { Trade } from '@/domain/trade'
@@ -8,7 +8,6 @@ import type { NFTCollection } from '@/domain/nft-collection'
 import { NFTCollectionDTO, toNFTCollection } from '../dtos/nft-collection'
 import { getBaseUrl } from '../config'
 import { buildQuery } from './logic/build-query'
-import { fetchJSON } from '@/lib/utils/http'
 
 export async function getDmrktCount(
   countOf: string,

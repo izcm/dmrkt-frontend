@@ -2,8 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-
-import { addrShort } from '@/lib/utils/hex'
+import { addrShort } from '@a2zb/lib'
 
 import { NFTCollection } from '@/domain/nft-collection'
 import { Hex } from '@/domain/shared/eth'

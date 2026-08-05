@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@a2zb/abis": "^1.0.0",
+    "@a2zb/lib": "file:../../izblocks/shared-packages/lib",
     "@a2zb/react": "file:../../izblocks/shared-packages/react",
     "@a2zb/react-wagmi": "file:../../izblocks/shared-packages/react-wagmi",
     "@a2zb/viem": "file:../../izblocks/shared-packages/viem",

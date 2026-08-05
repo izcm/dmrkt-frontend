@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-import type { Page } from '@/lib/utils/http'
+import type { Page } from '@/lib/dmrkt-indexer/types'
 import { type Tx, useTx } from '@/app/providers/TxProvider'
 
 // shared components

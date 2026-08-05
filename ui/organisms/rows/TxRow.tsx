@@ -1,7 +1,7 @@
 import { useState } from 'react'
+import { timeAgo } from '@a2zb/lib'
 
 import type { Tx } from '@/app/providers/TxProvider'
-import { timeAgo } from '@/lib/utils/time'
 import { Copyable } from '@/ui/atoms'
 
 const ERROR_TRUNCATE = 80

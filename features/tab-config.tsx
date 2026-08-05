@@ -1,6 +1,7 @@
 import { ButtonHTMLAttributes, JSX, ReactNode } from 'react'
+import { capitalize, type Result } from '@a2zb/lib'
 
-import type { Page, Result } from '@/lib/utils/http'
+import type { Page } from '@/lib/dmrkt-indexer/types'
 import {
   getDmrktListings,
   getDmrktSettlements,
@@ -20,7 +21,6 @@ import { Ban, CreditCard, FileText, Gavel, Handshake, Slash, Tag, X } from '@/ui
 // feature components
 import { ListingDetails } from './marketplace/ui/ListingDetails'
 import { TradeDetails } from './marketplace/ui/TradeDetails'
-import { capitalize } from '@/lib/utils/string'
 
 // === BASE INFO ===
 

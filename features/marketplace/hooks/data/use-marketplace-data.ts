@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import type { Hex } from '@/domain/shared/eth'
 
-import type { Page } from '@/lib/utils/http'
+import type { Page } from '@/lib/dmrkt-indexer/types'
 import { connectWs } from '@/lib/realtime/ws'
 import { getWsUrl } from '@/lib/dmrkt-indexer/config'
 

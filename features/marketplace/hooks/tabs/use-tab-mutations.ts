@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useCallback } from 'react'
 
-import { Page } from '@/lib/utils/http'
+import { Page } from '@/lib/dmrkt-indexer/types'
 import { TabName, TabResource } from '@/features/tab-config'
 
 export type TabPages = {

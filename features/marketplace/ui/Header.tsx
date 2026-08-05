@@ -1,6 +1,7 @@
 'use client'
 import { ReactNode } from 'react'
 import { useSwitchChain } from 'wagmi'
+import { truncateHex } from '@a2zb/lib'
 
 import dynamic from 'next/dynamic'
 
@@ -9,7 +10,6 @@ import type { Tx } from '@/app/providers/TxProvider'
 import type { Hex } from '@/domain/shared/eth'
 
 import { cn } from '@/lib/utils/cn'
-import { truncateHex } from '@/lib/utils/hex'
 import { getChainConfig } from '@/lib/blockchain'
 
 import { useWallet } from '@/features/wallet/hooks/use-wallet'

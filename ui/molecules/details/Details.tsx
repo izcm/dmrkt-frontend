@@ -1,5 +1,6 @@
+import { truncateHex } from '@a2zb/lib'
+
 import type { Hex } from '@/domain/shared/eth'
-import { truncateHex } from '@/lib/utils/hex'
 
 import { Copyable } from '@/ui/atoms'
 import { DetailFields, type DetailField } from './DetailFields'

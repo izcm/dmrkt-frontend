@@ -1,8 +1,8 @@
 import { useState, type ReactNode } from 'react'
 import Image from 'next/image'
+import { tsSuperShort } from '@a2zb/lib'
 
 import { formatEth2 } from '@/lib/blockchain'
-import { tsSuperShort } from '@/lib/utils/time'
 
 import { NFT_LOADING_IMAGE } from '@/domain/constants/placeholders'
 

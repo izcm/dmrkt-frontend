@@ -1,4 +1,5 @@
-import type { Page, Result } from '@/lib/utils/http'
+import { Result, fetchJSON } from '@a2zb/lib'
+import type { Page } from '@/lib/dmrkt-indexer/types'
 
 import type { Listing } from '@/domain/listing'
 import type { NFT } from '@/domain/nft'
@@ -11,7 +12,6 @@ import { SettlementDTO, toTrade } from '../dtos/settlement'
 
 import { getBaseUrl } from '../config'
 import { buildQuery } from './logic/build-query'
-import { fetchJSON } from '@/lib/utils/http'
 
 function mapResult<TDTO, T>(
   res: Result<{ items: TDTO[]; nextCursor: string | null }>,

@@ -6,7 +6,7 @@ import {
 } from '@/lib/dmrkt-indexer/actions/dmrkt-page.get'
 
 import { MarketplaceView } from '@/features/MarketplaceView'
-import { unwrap } from '@/lib/utils/http'
+import { unwrap } from '@a2zb/lib'
 
 export default async function Page({
   params,

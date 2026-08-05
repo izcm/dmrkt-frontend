@@ -2,12 +2,12 @@ import { expect, it, Mock, vi } from 'vitest'
 import { renderHook } from '@testing-library/react'
 
 import type { TabName, TabResource } from '@/features/tab-config'
-import type { WsSubProps } from '../use-ws-sub'
+import type { WsSubProps } from '@a2zb/react'
 import { Handler } from '@/lib/realtime/ws'
 
 export const makeHelpers = <K extends TabName>(
   tab: K,
-  useSubHook: (props: WsSubProps) => void,
+  useSubHook: (props: WsSubProps<TabResource>) => void,
   on: Mock
 ) => {
   function setup() {

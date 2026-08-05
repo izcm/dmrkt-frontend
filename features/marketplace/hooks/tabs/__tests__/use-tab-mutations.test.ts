@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { renderHook } from '@testing-library/react'
 
 import { TabName, TabResource } from '@/features/tab-config'
-import { Page } from '@/lib/utils/http'
+import { Page } from '@/lib/dmrkt-indexer/types'
 
 import { useTabMutations } from '../use-tab-mutations'
 
@@ -98,7 +98,11 @@ describe('use-tab-mutations', () => {
   })
 
   describe('addItemSorted', () => {
-    const itemsAsc = [{ createdAt: 1 }, { createdAt: 3 }, { createdAt: 5 }] as TabResource['orders'][]
+    const itemsAsc = [
+      { createdAt: 1 },
+      { createdAt: 3 },
+      { createdAt: 5 },
+    ] as TabResource['orders'][]
     const itemsDesc = [...itemsAsc].sort((a, b) => b.createdAt - a.createdAt)
 
     const addedItem = { createdAt: 2 } as TabResource['orders']
@@ -149,9 +153,9 @@ describe('use-tab-mutations', () => {
         withState: sortedOrders(dir as 'asc' | 'desc'),
       })
 
-      expect(getState().orders.items[sortedOrders(dir as 'asc' | 'desc').orders.items.length]).toEqual(
-        item
-      )
+      expect(
+        getState().orders.items[sortedOrders(dir as 'asc' | 'desc').orders.items.length]
+      ).toEqual(item)
     })
 
     it('does nothing if sort field is invalid', () => {

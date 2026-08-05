@@ -1,5 +1,6 @@
+import { tsShort } from '@a2zb/lib'
+
 import type { Trade } from '@/domain/trade'
-import { tsShort } from '@/lib/utils/time'
 
 import { Details, HexDetailField } from '@/ui/molecules'
 import type { DetailField } from '@/ui/molecules/details/DetailFields'

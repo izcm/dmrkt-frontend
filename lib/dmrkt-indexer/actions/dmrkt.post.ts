@@ -1,13 +1,11 @@
 // todo: indexer will move from storing rsv => storing raw signature asap
 import { parseSignature } from 'viem'
+import { getResponseError, Result } from '@a2zb/lib'
 
 import type { OrderCore } from '@/protocol/eip712'
 import type { Hex } from '@/domain/shared/eth'
 
 import { getBaseUrl } from '../config'
-
-import { Result } from '@/lib/utils/http'
-import { getResponseError } from './logic/get-error'
 
 export async function postDmrktOrder(
   chainId: number,

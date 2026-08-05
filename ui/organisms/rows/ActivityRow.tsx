@@ -1,10 +1,9 @@
 // todo: decouple
 import type { ReactNode } from 'react'
+import { truncateHex, tsSuperShort } from '@a2zb/lib'
 
 import { formatEth2 } from '@/lib/blockchain'
 import { useTokenURI } from '@/lib/blockchain/hooks'
-import { tsSuperShort } from '@/lib/utils/time'
-import { truncateHex } from '@/lib/utils/hex'
 
 import { ExternalLink } from '@/ui/icons'
 

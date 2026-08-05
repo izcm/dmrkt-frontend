@@ -1,4 +1,4 @@
-import { addrShort, truncateHex } from '@/lib/utils/hex'
+import { addrShort, truncateHex } from '@a2zb/lib'
 
 import type { Trade } from '@/domain/trade'
 import { Copyable } from '../atoms'

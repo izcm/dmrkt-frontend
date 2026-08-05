@@ -1,6 +1,6 @@
 import { it, expect, vi, describe } from 'vitest'
 
-import { Result } from '@/lib/utils/http'
+import { Result } from '@a2zb/lib'
 
 export function fetchWith<TArgs extends unknown[], TResult>(
   fn: (...args: TArgs) => Promise<TResult>,

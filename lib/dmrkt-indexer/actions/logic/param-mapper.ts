@@ -1,4 +1,5 @@
-import { capitalize } from '@/lib/utils/string'
+import { capitalize } from '@a2zb/lib'
+
 import { resolveFieldName } from '@/features/marketplace/lib/field-config'
 
 /**
