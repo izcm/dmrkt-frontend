@@ -1,9 +1,9 @@
-import type { Listing, ListingStatus } from '@/domain/listing'
+import type { Listing, ListingStatus } from '@/domain/models/listing'
 
-import type { NFT } from '../nft'
-import type { Trade } from '../trade'
+import type { NFT } from './models/nft'
+import type { Trade } from './models/trade'
 
-import type { Hex } from './eth'
+import type { Hex } from './shared/eth'
 
 type ActivityStatus = ListingStatus
 

@@ -1,4 +1,4 @@
-import type { NFTCollection } from '@/domain/nft-collection'
+import type { NFTCollection } from '@/domain/models/nft-collection'
 import type { Hex } from '@/domain/shared/eth'
 
 type Status = 'DONE' | 'PENDING' | 'FAILED'

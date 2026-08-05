@@ -1,9 +1,9 @@
 import { fetchJSON, type Result } from '@a2zb/lib'
 
-import type { Listing } from '@/domain/listing'
-import type { Trade } from '@/domain/trade'
-import type { NFT } from '@/domain/nft'
-import type { NFTCollection } from '@/domain/nft-collection'
+import type { Listing } from '@/domain/models/listing'
+import type { Trade } from '@/domain/models/trade'
+import type { NFT } from '@/domain/models/nft'
+import type { NFTCollection } from '@/domain/models/nft-collection'
 
 import { NFTCollectionDTO, toNFTCollection } from '../dtos/nft-collection'
 import { getBaseUrl } from '../config'

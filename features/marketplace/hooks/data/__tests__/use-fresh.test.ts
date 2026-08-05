@@ -18,7 +18,7 @@ describe('useFresh', () => {
     vi.useFakeTimers()
 
     hook = renderHook((props: HookProps) => useFresh(...props), {
-      initialProps: ['orders' as TabName],
+      initialProps: ['orders' as TabName] as HookProps,
     })
   })
 
@@ -140,12 +140,15 @@ describe('useFresh', () => {
       expect(isFreshOnlyActive(tab, base.id)).toBe(false)
     })
 
-    it.each(otherTabs)('does not mark discarded items fresh after switching to that tab: %s', tab => {
-      act(() => addOnlyActive(tab, base.id))
+    it.each(otherTabs)(
+      'does not mark discarded items fresh after switching to that tab: %s',
+      tab => {
+        act(() => addOnlyActive(tab, base.id))
 
-      act(() => onlyActiveHook.rerender([tab, { onlyForActiveTab: true }]))
+        act(() => onlyActiveHook.rerender([tab, { onlyForActiveTab: true }]))
 
-      expect(isFreshOnlyActive(tab, base.id)).toBe(false)
-    })
+        expect(isFreshOnlyActive(tab, base.id)).toBe(false)
+      }
+    )
   })
 })

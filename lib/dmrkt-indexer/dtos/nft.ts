@@ -1,5 +1,5 @@
-import { NFT_PLACEHOLDER_IMAGE } from '@/domain/constants/placeholders'
-import type { NFT } from '@/domain/nft'
+import { NFT_PLACEHOLDER_IMAGE } from '@/domain/placeholders'
+import type { NFT } from '@/domain/models/nft'
 import type { Hex } from '@/domain/shared/eth'
 
 export type NFTDTO = {

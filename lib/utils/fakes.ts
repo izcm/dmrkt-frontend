@@ -1,5 +1,5 @@
 import { Tx } from '@/app/providers/TxProvider'
-import type { Listing } from '@/domain/listing'
+import type { Listing } from '@/domain/models/listing'
 import type { TabCtx } from '@/features/tab-config'
 import { OrderCore, OrderSide } from '@/protocol/eip712'
 

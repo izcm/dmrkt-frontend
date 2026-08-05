@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { addrShort } from '@a2zb/lib'
 
-import { NFTCollection } from '@/domain/nft-collection'
+import { NFTCollection } from '@/domain/models/nft-collection'
 import { Hex } from '@/domain/shared/eth'
 
 import { ImageRow, Gallery } from '@/ui/molecules'

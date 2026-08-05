@@ -1,7 +1,7 @@
 import type { Order } from '@/protocol/eip712'
 
 import type { Hex } from '@/domain/shared/eth'
-import type { Listing } from '@/domain/listing'
+import type { Listing } from '@/domain/models/listing'
 
 import { toNFTCollection, type NFTCollectionDTO } from './nft-collection'
 import { toNFT, type NFTDTO } from './nft'

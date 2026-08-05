@@ -2,7 +2,7 @@
 
 import { createContext, useContext } from 'react'
 
-import type { NFTCollection } from '@/domain/nft-collection'
+import type { NFTCollection } from '@/domain/models/nft-collection'
 
 const CollectionContext = createContext<NFTCollection | null>(null)
 

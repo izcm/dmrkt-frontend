@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { PLACEHOLDER_NFT, type NFT } from '@/domain/nft'
+import { PLACEHOLDER_NFT, type NFT } from '@/domain/models/nft'
 
 import { DetailField, Details, GalleryItem } from '@/ui/molecules'
 

@@ -1,4 +1,4 @@
-import { ListingStatus } from '@/domain/listing'
+import { ListingStatus } from '@/domain/models/listing'
 
 export const listingStatusToClass: Record<ListingStatus, string> = {
   active: 'order-active',

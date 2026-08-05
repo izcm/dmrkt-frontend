@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef } from 'react'
 
 import { Hex } from '@/domain/shared/eth'
-import { Listing } from '@/domain/listing'
-import { Trade } from '@/domain/trade'
+import { Listing } from '@/domain/models/listing'
+import { Trade } from '@/domain/models/trade'
 
 import { TabName, TabResource } from '@/features/tab-config'
 

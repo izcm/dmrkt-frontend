@@ -1,6 +1,6 @@
 import { addrShort, truncateHex } from '@a2zb/lib'
 
-import type { Trade } from '@/domain/trade'
+import type { Trade } from '@/domain/models/trade'
 import { Copyable } from '../atoms'
 
 function Row({ label, value }: { label: string; value: React.ReactNode }) {

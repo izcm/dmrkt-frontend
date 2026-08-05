@@ -8,10 +8,10 @@ import {
   getDmrktNFTs,
 } from '@/lib/dmrkt-indexer/actions/dmrkt-page.get'
 
-import type { Listing } from '@/domain/listing'
-import type { Trade } from '@/domain/trade'
-import type { NFT } from '@/domain/nft'
-import { activity } from '@/domain/shared/activity'
+import type { Listing } from '@/domain/models/listing'
+import type { Trade } from '@/domain/models/trade'
+import type { NFT } from '@/domain/models/nft'
+import { activity } from '@/domain/activity'
 import { getChainConfig } from '@/lib/blockchain/wagmi'
 
 // shared components

@@ -10,7 +10,7 @@ import { TradeReceipt } from '@/ui/organisms'
 import { SettingsMenu } from '@/features/wallet/SettingsMenu'
 import { Modal, Spinner, TextInput } from '@/ui/atoms'
 
-import type { NFTCollection } from '@/domain/nft-collection'
+import type { NFTCollection } from '@/domain/models/nft-collection'
 
 // tab config
 import { TabResource, tabUIConfig, type TabName } from './tab-config'

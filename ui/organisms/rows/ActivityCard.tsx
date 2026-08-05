@@ -4,10 +4,10 @@ import { tsSuperShort } from '@a2zb/lib'
 
 import { formatEth2 } from '@/lib/blockchain'
 
-import { NFT_LOADING_IMAGE } from '@/domain/constants/placeholders'
+import { NFT_LOADING_IMAGE } from '@/domain/placeholders'
 
-import type { Activity } from '@/domain/shared/activity'
-import type { NFT } from '@/domain/nft'
+import type { Activity } from '@/domain/activity'
+import type { NFT } from '@/domain/models/nft'
 
 import { listingStatusToClass } from '@/features/marketplace/lib/listing-status-ui'
 import { useCollection } from '@/features/CollectionContext'
@@ -77,7 +77,9 @@ export function ActivityCard({ activity, detailsPane }: Props) {
       </div>
 
       {status && status !== 'active' && (
-        <span className={`text-[11px] tracking-wide px-1 self-start ${listingStatusToClass[status]}`}>
+        <span
+          className={`text-[11px] tracking-wide px-1 self-start ${listingStatusToClass[status]}`}
+        >
           {status.toUpperCase()}
         </span>
       )}

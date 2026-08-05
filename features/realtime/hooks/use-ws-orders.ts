@@ -4,7 +4,7 @@ import { useWsSub, type WsSubProps } from '@a2zb/react'
 import { on } from '@/lib/realtime/ws'
 import { getDmrktListing } from '@/lib/dmrkt-indexer/actions/dmrkt.get'
 
-import type { ListingStatus } from '@/domain/listing'
+import type { ListingStatus } from '@/domain/models/listing'
 import { TabResource } from '@/features/tab-config'
 
 const statusMap = {

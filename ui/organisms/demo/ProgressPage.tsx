@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import { NFTCollection } from '@/domain/nft-collection'
+import { NFTCollection } from '@/domain/models/nft-collection'
 import { getDmrktNFTCollection } from '@/lib/dmrkt-indexer/actions/dmrkt.get'
 import { getBaseUrl } from '@/lib/dmrkt-indexer/config'
 import { Spinner } from '@/ui/atoms/Spinner'

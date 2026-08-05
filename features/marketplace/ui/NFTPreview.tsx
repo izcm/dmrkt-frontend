@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useTokenURI } from '@/lib/blockchain/hooks'
 
 import { Hex } from '@/domain/shared/eth'
-import { mapTokenUriToNFT, NFT } from '@/domain/nft'
+import { mapTokenUriToNFT, NFT } from '@/domain/models/nft'
 
 import { NFTCard } from '@/ui/organisms'
 

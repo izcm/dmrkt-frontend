@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-import type { Listing } from '@/domain/listing'
-import type { NFT } from '@/domain/nft'
-import type { Trade } from '@/domain/trade'
+import type { Listing } from '@/domain/models/listing'
+import type { NFT } from '@/domain/models/nft'
+import type { Trade } from '@/domain/models/trade'
 import type { Hex } from '@/domain/shared/eth'
 
 import { OrderSide } from '@/protocol/eip712'

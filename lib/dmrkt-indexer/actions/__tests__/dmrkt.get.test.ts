@@ -9,7 +9,10 @@ vi.mock('../../config', () => ({
 
 describe('dmrkt item getters', () => {
   beforeEach(() => {
-    vi.stubGlobal('fetch', vi.fn())
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({ ok: true, json: async () => ({}) } as Response)
+    )
   })
 
   afterEach(() => {

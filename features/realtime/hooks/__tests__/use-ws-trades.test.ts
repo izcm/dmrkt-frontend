@@ -6,7 +6,7 @@ import { getDmrktTrade } from '@/lib/dmrkt-indexer/actions/dmrkt.get'
 
 import { useWsTrades } from '../use-ws-trades'
 import { makeHelpers, testAddItemOnEvent } from './helpers'
-import { Trade } from '@/domain/trade'
+import { Trade } from '@/domain/models/trade'
 
 vi.mock('@/lib/realtime/ws', () => ({ on: vi.fn() }))
 vi.mock(import('@/lib/dmrkt-indexer/actions/dmrkt.get'), async importOriginal => {

@@ -7,10 +7,10 @@ import { useTokenURI } from '@/lib/blockchain/hooks'
 
 import { ExternalLink } from '@/ui/icons'
 
-import { NFT_LOADING_IMAGE } from '@/domain/constants/placeholders'
+import { NFT_LOADING_IMAGE } from '@/domain/placeholders'
 
-import type { Activity } from '@/domain/shared/activity'
-import { mapTokenUriToNFT, type NFT } from '@/domain/nft'
+import type { Activity } from '@/domain/activity'
+import { mapTokenUriToNFT, type NFT } from '@/domain/models/nft'
 
 import { listingStatusToClass } from '@/features/marketplace/lib/listing-status-ui'
 import { useCollection } from '@/features/CollectionContext'

@@ -1,4 +1,4 @@
-import type { Hex } from './shared/eth'
+import type { Hex } from '../shared/eth'
 
 export type NFTCollectionStatus = 'DONE' | 'PENDING' | 'FAILED'
 

@@ -3,8 +3,8 @@ import { act } from 'react'
 import { vi, describe, it, expect } from 'vitest'
 import { renderHook } from '@testing-library/react'
 
-import type { Trade } from '@/domain/trade'
-import type { NFT } from '@/domain/nft'
+import type { Trade } from '@/domain/models/trade'
+import type { NFT } from '@/domain/models/nft'
 
 import { OrderSide } from '@/protocol/eip712'
 

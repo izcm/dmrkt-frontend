@@ -1,6 +1,6 @@
 import type { Order } from '@/protocol/eip712'
 
-import type { Hex } from './shared/eth'
+import type { Hex } from '../shared/eth'
 import type { NFTCollection } from './nft-collection'
 import { NFT } from './nft'
 

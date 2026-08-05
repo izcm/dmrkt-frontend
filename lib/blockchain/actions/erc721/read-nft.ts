@@ -1,7 +1,7 @@
 import { erc721Abi, type Address, type PublicClient } from 'viem'
 import type { Result } from '@a2zb/lib'
 
-import { mapTokenUriToNFT, type NFT } from '@/domain/nft'
+import { mapTokenUriToNFT, type NFT } from '@/domain/models/nft'
 
 export async function readNFT(
   client: PublicClient,

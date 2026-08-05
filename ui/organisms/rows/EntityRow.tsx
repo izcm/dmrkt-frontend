@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react'
 
-import type { NFT } from '@/domain/nft'
+import type { NFT } from '@/domain/models/nft'
 import { useCollection } from '@/features/CollectionContext'
 
 import { ImageRow } from '@/ui/molecules/ImageRow'

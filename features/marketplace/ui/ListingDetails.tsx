@@ -1,6 +1,6 @@
 import { tsShort } from '@a2zb/lib'
 
-import type { Listing } from '@/domain/listing'
+import type { Listing } from '@/domain/models/listing'
 
 import { Details, HexDetailField } from '@/ui/molecules'
 import type { DetailField } from '@/ui/molecules/details/DetailFields'

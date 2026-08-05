@@ -1,9 +1,9 @@
 import { Result, fetchJSON } from '@a2zb/lib'
 import type { Page } from '@/lib/dmrkt-indexer/types'
 
-import type { Listing } from '@/domain/listing'
-import type { NFT } from '@/domain/nft'
-import type { NFTCollection } from '@/domain/nft-collection'
+import type { Listing } from '@/domain/models/listing'
+import type { NFT } from '@/domain/models/nft'
+import type { NFTCollection } from '@/domain/models/nft-collection'
 
 import { toListing, type OrderDTO } from '../dtos/order'
 import { toNFT, type NFTDTO } from '../dtos/nft'

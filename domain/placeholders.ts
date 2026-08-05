@@ -1,4 +1,4 @@
-import type { NFT } from '../nft'
+import type { NFT } from './models/nft'
 
 export const NFT_LOADING_IMAGE = '/placeholders/token-waiting.svg'
 export const NFT_PLACEHOLDER_IMAGE = '/placeholders/token-couldnt-read.svg'

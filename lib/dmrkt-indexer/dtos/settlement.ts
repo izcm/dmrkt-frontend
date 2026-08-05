@@ -1,5 +1,5 @@
 import type { Hex } from '@/domain/shared/eth'
-import type { Trade } from '@/domain/trade'
+import type { Trade } from '@/domain/models/trade'
 
 import { type NFTCollectionDTO, toNFTCollection } from './nft-collection'
 import { type NFTDTO, toNFT } from './nft'
